@@ -1,0 +1,18 @@
+<!-- La view artículo -->
+<section data-ng-controller="EmpresasController" data-ng-init="findOne()">
+    <h1 data-ng-bind="empresa.nombre"></h1>
+    <!-- Mostrar los botones de edición para artículo creado -->
+    <div data-ng-show="authentication.user._id == empresa.creador._id">
+        <a href="/#!/empresas/{{empresa._id}}/edit">editar</a>
+        <a href="#" data-ng-click="delete();">borrar</a>
+    </div>
+    <small>
+        <em>Publicado el</em>
+        <em data-ng-bind="empresa.creado | date:'mediumDate'"></em>
+        <em>Por</em>
+        <em data-ng-bind="empresa.creador.fullName"></em>
+    </small>
+    <p data-ng-bind="empresa.nombre"></p>
+    <p data-ng-bind="empresa.provincia"></p>
+    <p data-ng-bind="empresa.localidad"></p>
+</section>

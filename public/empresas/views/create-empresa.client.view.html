@@ -1,0 +1,92 @@
+<!-- Crear la View Articles -->
+<section data-ng-controller="EmpresasController">
+	<h1>Agregar Empresa</h1>
+	<!-- El formulario nuevo artículo -->
+	<form data-ng-submit="create()" novalidate>
+		<div>
+			<label for="nombre">Nombre Empresa</label>
+			<div>
+				<input type="text" data-ng-model="nombre" id="nombre" placeholder="Nombre" required>
+			</div>
+		</div>
+
+ 		<div>
+ 			<h3>Seleccionar Provincias atendidas</h3>
+ 		<div ng-repeat="localidad in localidades | unique:'provincia'">
+ 			<div>
+   				<input id="{{localidad.provincia}}" type="checkbox" value="{{localidad.provincia}}" ng-checked="selection.indexOf(localidad.provincia) > -1" ng-click="toggleSelection(localidad.provincia)" />
+   				<label for="{{localidad.provincia}}"></label>
+   					{{localidad.provincia}}
+  			</div>
+ 		</div>
+ 		
+		</div>
+		<br>
+		<h3>Seleccionar Localidades atendidas por Provincia:</h3>
+ 		<div id="seleccionados" data-ng-model="seleccionados" ng-repeat="seleccionados in selection">
+  			<span>{{seleccionados}}</span>
+  			<div ng-repeat="localidad in localidades | filter: { provincia: seleccionados }">
+  			<input id="{{localidad.nombre}}" type="checkbox" value="{{localidad.nombre}}" ng-checked="selectionLoc.indexOf(localidad.nombre) > -1" ng-click="toggleSelectionLoc(localidad.nombre)" />
+   				<label for="{{localidad.nombre}}"></label>
+   					{{localidad.nombre}}
+  			</div>
+
+ 		</div>
+
+ 		<h3>Cargar sucursales</h3>
+ 		<div>
+			<label for="titulo">Nombre Sucursal (central)</label>
+			<div>
+				<input type="text" data-ng-model="nombreSuc" id="nombre" placeholder="NombreSuc" required>
+			</div>
+		</div>
+		<div>
+			<select name="provinciaSuc" id="provinciaSuc" data-ng-model="provinciaSuc">
+				<option value="San Juan">San Juan</option>
+				<option value="Córdoba">Córdoba</option>
+				<option value="Santa Fe">Santa Fe</option>
+				<option value="Mendoza">Mendoza</option>
+			</select>
+		</div>
+		<div>
+			<select name="localidadSuc" id="localidadSuc" data-ng-model="localidadSuc">
+				<option value="Ullum">Ullum</option>
+				<option value="Villa María">Villa María</option>
+				<option value="Rosario">Rosario</option>
+				<option value="Lujan de Cuyo">Lujan de Cuyo</option>
+			</select>
+		</div>
+		<div>
+			<label for="titulo">Nombre Sucursal 2</label>
+			<div>
+				<input type="text" data-ng-model="nombreSuc2" id="nombre" placeholder="NombreSuc2" required>
+			</div>
+		</div>
+		<div>
+			<select name="provinciaSuc2" id="provinciaSuc2" data-ng-model="provinciaSuc2">
+				<option value="San Juan">San Juan</option>
+				<option value="Córdoba">Córdoba</option>
+				<option value="Santa Fe">Santa Fe</option>
+				<option value="Mendoza">Mendoza</option>
+			</select>
+		</div>
+		<div>
+			<select name="localidadSuc2" id="localidadSuc2" data-ng-model="localidadSuc2">
+				<option value="Ullum">Ullum</option>
+				<option value="Villa María">Villa María</option>
+				<option value="Rosario">Rosario</option>
+				<option value="Lujan de Cuyo">Lujan de Cuyo</option>
+			</select>
+		</div>
+		
+
+ 		<br>
+		<div>
+			<input value="Guardar" type="submit">
+		</div>
+		<!-- El elemento mensaje de error -->
+		<div data-ng-show="error">
+			<strong data-ng-bind="error"></strong>
+		</div>
+	</form>
+</section>

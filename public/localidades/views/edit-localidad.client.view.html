@@ -1,0 +1,34 @@
+<!-- La view editar artículo -->
+<section data-ng-controller="LocalidadesController" data-ng-init="findOne()">
+	<h1>Ediar Localidad</h1>
+	<!-- Formulario editar artículo -->
+	<form data-ng-submit="update()" novalidate>
+		<div>
+			<label for="titulo">Nombre</label>
+			<div>
+				<input type="text" data-ng-model="localidad.nombre" id="nombre" placeholder="Nombre" required>
+			</div>
+		</div>
+		<div>
+			<label for="provincia">Provincia</label>
+			<div>
+				<select name="provincia" data-ng-model="localidad.provincia" id="provincia">
+					<option value="Córdoba">Córdoba</option>
+  					<option value="Santa Fe">Santa Fe</option>
+ 				 	<option value="Bs As">Bs As</option>
+  					<option value="San Juan">San Juan</option>
+				</select>
+				
+			</div>
+		</div>
+		
+		<div>
+			<input type="submit" value="Actualizar">
+		</div>
+		<!-- El elemento mensaje error -->
+		<div data-ng-show="error">
+			<strong data-ng-bind="error"></strong>
+		</div>
+	</form>
+	</div>
+</section>

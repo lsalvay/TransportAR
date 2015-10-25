@@ -1,0 +1,25 @@
+<!-- La view listar artículos -->
+<section data-ng-controller="EmpresasController" data-ng-init="find()">
+	<h1>Empresas</h1>
+	<ul>
+		<!-- La lista de artículos -->
+		<li data-ng-repeat="empresa in empresas">
+			<a data-ng-href="#!/empresas/{{empresa._id}}" data-ng-bind="empresa.nombre"></a>
+			<br>
+			<small data-ng-bind="empresa.creado | date:'medium'"></small>
+			<small>/</small>
+			<small data-ng-bind="empresa.creador.fullName"></small>
+			<p data-ng-bind="empresa.provincia"></p>
+			<p data-ng-bind="empresa.localidad"></p>
+			<!-- Mostrar los botones de edición para artículo creado -->
+    <p data-ng-show="authentication.user._id == empresa.creador._id">
+        <a href="/#!/empresas/{{empresa._id}}/edit">editar</a>
+        <a href="/#!/empresas/{{empresa._id}}" data-ng-click="delete();">borrar</a>
+    </p>
+		</li>
+	</ul>
+	<!-- Si no hay artículos en la lista, sugire al usuario que cree un nuevo artículo -->
+	<div data-ng-hide="!empresas || empresas.length">
+		Aún no hay empresas, porque no creas <a href="/#!/empresas/create">la primera</a>?
+	</div>
+</section>

@@ -1,0 +1,33 @@
+<!-- Crear la View Articles -->
+<section data-ng-controller="LocalidadesController">
+	<h1>Nueva Localidad</h1>
+	<!-- El formulario nuevo artículo -->
+	<form data-ng-submit="create()" novalidate>
+		<div>
+			<label for="nombre">Nombre</label>
+			<div>
+				<input type="text" data-ng-model="nombre" id="nombre" placeholder="Nombre" required>
+			</div>
+		</div>
+		<div>
+			<label for="provincia">Provincia</label>
+			<div>
+				<select name="provincia" data-ng-model="provincia" id="provincia">
+					<option value="Córdoba">Córdoba</option>
+  					<option value="Santa Fe">Santa Fe</option>
+ 				 	<option value="Bs As">Bs As</option>
+  					<option value="San Juan">San Juan</option>
+				</select>
+				
+			</div>
+		</div>
+		
+		<div>
+			<input type="submit">
+		</div>
+		<!-- El elemento mensaje de error -->
+		<div data-ng-show="error">
+			<strong data-ng-bind="error"></strong>
+		</div>
+	</form>
+</section>

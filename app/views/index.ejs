@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Usar la propiedad 'title' para renderizar un título de página  -->
+	<title><%= title %></title>
+
+	<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <header>
+    <div ng-controller="ExampleController">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">TransporAR</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+            
+              <li class="dropdown" data-ng-show="!authentication.user">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">LogIn<span class="caret"></span></a>
+                <ul class="dropdown-menu" >
+                  <li role="separator" class="divider"></li>
+                  
+                  <li><a href="/signup">Crear Cuenta</a></li>
+                  <li><a href="/signin">Login</a></li>
+                  
+                 
+                </ul>
+              </li>
+              <li class="dropdown" data-ng-show="authentication.user">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span data-ng-bind="authentication.user.fullName"></span><span class="caret"></span></a>
+                <ul class="dropdown-menu" >
+
+                  <li role="separator" class="divider"></li>
+                  
+                  <li><a href="/signout">Logout</a></li>
+                  <li role="separator" class="divider"></li>
+                  
+                  <li><a href="/#!/articles">Listar Artículos</a></li>
+                  <li><a href="/#!/articles/create">Crear Artículo</a></li>
+                  <li><a href="/#!/empresas">Listar Empresas</a></li>
+                  <li><a href="/#!/empresas/create">Crear Empresa</a></li>
+                  <li><a href="/#!/localidades">Listar Localidades</a></li>
+                  <li><a href="/#!/localidades/create">Crear Localidad</a></li>
+                  
+                 
+                </ul>
+              </li>
+            </ul>
+        </div>
+      </div>
+    </nav>
+    </div>
+        
+    </header><!-- /header -->
+	
+
+	<section ng-view></section>
+	<script type="text/javascript">
+    window.user = <%- user || 'null' %>;
+    </script>
+    <script type="text/javascript" src="/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="/lib/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
+	<script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
+	<script type="text/javascript" src="/lib/angular-ui/build/angular-ui.min.js"></script>
+
+	<!--Artículos  -->
+	<script type="text/javascript" src="/articles/articles.client.module.js"></script>
+    <script type="text/javascript" src="/articles/controllers/articles.client.controller.js"></script>
+    <script type="text/javascript" src="/articles/services/articles.client.service.js"></script>
+    <script type="text/javascript" src="/articles/config/articles.client.routes.js"></script>	
+
+<!--Empresas  -->
+	<script type="text/javascript" src="/empresas/empresas.client.module.js"></script>
+    <script type="text/javascript" src="/empresas/controllers/empresas.client.controller.js"></script>
+    <script type="text/javascript" src="/empresas/services/empresas.client.service.js"></script>
+    <script type="text/javascript" src="/empresas/config/empresas.client.routes.js"></script>
+    <!--Localidades  -->
+	<script type="text/javascript" src="/localidades/localidades.client.module.js"></script>
+    <script type="text/javascript" src="/localidades/controllers/localidades.client.controller.js"></script>
+    <script type="text/javascript" src="/localidades/services/localidades.client.service.js"></script>
+    <script type="text/javascript" src="/localidades/config/localidades.client.routes.js"></script>	
+
+
+
+	<script type="text/javascript" src="/example/example.client.module.js"></script>
+	<script type="text/javascript" src="/example/controllers/example.client.controller.js"></script>
+	<script type="text/javascript" src="/example/config/example.client.routes.js"></script>
+	<script type="text/javascript" src="/users/users.client.module.js"></script>
+    <script type="text/javascript" src="/users/services/authentication.client.service.js"></script>
+	<script type="text/javascript" src="/application.js"></script>
+</body>
+</html>

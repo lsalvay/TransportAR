@@ -1,0 +1,18 @@
+<!-- La view artículo -->
+<section data-ng-controller="LocalidadesController" data-ng-init="findOne()">
+    <h1 data-ng-bind="localidad.nombre"></h1>
+    <!-- Mostrar los botones de edición para artículo creado -->
+    <div data-ng-show="authentication.user._id == localidad.creador._id">
+        <a href="/#!/localidades/{{localidad._id}}/edit">editar</a>
+        <a href="#" data-ng-click="delete();">borrar</a>
+    </div>
+    <small>
+        <em>Publicado el</em>
+        <em data-ng-bind="localidad.creado | date:'mediumDate'"></em>
+        <em>Por</em>
+        <em data-ng-bind="localidad.creador.fullName"></em>
+    </small>
+    <p data-ng-bind="localidad.nombre"></p>
+    <p data-ng-bind="localidad.provincia"></p>
+    
+</section>

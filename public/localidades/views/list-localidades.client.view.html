@@ -1,0 +1,25 @@
+<!-- La view listar artículos -->
+<section data-ng-controller="LocalidadesController" data-ng-init="find()">
+	<h1>Localidades</h1>
+	<ul>
+		<!-- La lista de artículos -->
+		<li data-ng-repeat="localidad in localidades">
+			<a data-ng-href="#!/localidades/{{localidad._id}}" data-ng-bind="localidad.nombre"></a>
+			<br>
+			<small data-ng-bind="localidad.creado | date:'medium'"></small>
+			<small>/</small>
+			<small data-ng-bind="localidad.creador.fullName"></small>
+			<p data-ng-bind="localidad.provincia"></p>
+			
+			<!-- Mostrar los botones de edición para artículo creado -->
+    <p data-ng-show="authentication.user._id == localidad.creador._id">
+        <a href="/#!/localidades/{{localidad._id}}/edit">editar</a>
+        <a href="/#!/localidades/{{localidad._id}}" data-ng-click="delete();">borrar</a>
+    </p>
+		</li>
+	</ul>
+	<!-- Si no hay artículos en la lista, sugire al usuario que cree un nuevo artículo -->
+	<div data-ng-hide="!localidades || localidades.length">
+		Aún no hay localidades, porque no creas <a href="/#!/localidades/create">la primera</a>?
+	</div>
+</section>
