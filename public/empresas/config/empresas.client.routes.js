@@ -5,6 +5,9 @@
 angular.module('empresas').config(['$routeProvider',
 	function($routeProvider) {
 		$routeProvider.
+		when('/', {
+			templateUrl: 'empresas/views/buscar-empresas.client.view.html'
+		}).
 		when('/empresas', {
 			templateUrl: 'empresas/views/list-empresas.client.view.html'
 		}).

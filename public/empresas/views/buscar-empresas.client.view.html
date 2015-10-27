@@ -1,0 +1,12 @@
+<!-- La view listar artículos -->
+<section data-ng-controller="EmpresasController" data-ng-init="find()">
+	<h1>Buscador de Transportes de Carga</h1>
+	
+	<input type="text" placehoder="buscar empresa"></input>
+	<input type="text" placehoder="buscar empresa"></input>
+	<input type="text" placehoder="buscar empresa"></input>
+	<br>
+	<ul>
+		<li data-ng-repeat="empresa in empresas">{{empresa.nombre}}</li>
+	</ul>
+</section>
