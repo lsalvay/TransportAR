@@ -4,6 +4,9 @@ body {
   padding-bottom: 20px;
 }
 
+.title{
+  text-align: center;
+}
 .form-signin {
   max-width: 330px;
   padding: 15px;

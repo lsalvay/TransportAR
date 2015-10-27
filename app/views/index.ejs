@@ -74,7 +74,10 @@
     </header><!-- /header -->
 	
 
-	<section ng-view></section>
+	<div class="container">
+  <div ng-view></div>
+  </div>
+
 	<script type="text/javascript">
     window.user = <%- user || 'null' %>;
     </script>

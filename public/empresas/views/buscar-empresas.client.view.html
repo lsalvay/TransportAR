@@ -1,10 +1,42 @@
 <!-- La view listar artículos -->
 <section data-ng-controller="EmpresasController" data-ng-init="find()">
-	<h1>Buscador de Transportes de Carga</h1>
+	<div class="title">
+		<h1>Buscador de Transportes de Carga</h1>
+	</div>
 	
-	<input type="text" placehoder="buscar empresa"></input>
-	<input type="text" placehoder="buscar empresa"></input>
-	<input type="text" placehoder="buscar empresa"></input>
+	
+		<div class="row">
+		  <div class="col-md-6 col-md-offset-3">
+		    <div class="input-group">
+		      <input type="text" class="form-control" placeholder="Buscar por nombre...">
+		      <span class="input-group-btn">
+		        <button class="btn btn-default" type="button">Buscar</button>
+		      </span>
+		    </div><!-- /input-group -->
+		  </div><!-- /.col-lg-9 -->
+		</div><!-- /.row -->
+		<br>
+		<div class="row">
+		  <div class="col-md-6 col-md-offset-3">
+		    <div class="input-group">
+		      <input type="text" class="form-control" placeholder="Buscar por localidad...">
+		      <span class="input-group-btn">
+		        <button class="btn btn-default" type="button">Buscar</button>
+		      </span>
+		    </div><!-- /input-group -->
+		  </div><!-- /.col-lg-9 -->
+		</div><!-- /.row -->
+		<br>
+		<div class="row">
+		  <div class="col-md-6 col-md-offset-3">
+		    <div class="input-group">
+		      <input type="text" class="form-control" placeholder="Buscar por provincia...">
+		      <span class="input-group-btn">
+		        <button class="btn btn-default" type="button">Buscar</button>
+		      </span>
+		    </div><!-- /input-group -->
+		  </div><!-- /.col-lg-9 -->
+		</div><!-- /.row -->
 	<br>
 	<ul>
 		<li data-ng-repeat="empresa in empresas">{{empresa.nombre}}</li>
