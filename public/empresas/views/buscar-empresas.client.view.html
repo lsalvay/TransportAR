@@ -8,7 +8,7 @@
 		<div class="row">
 		  <div class="col-md-6 col-md-offset-3">
 		    <div class="input-group">
-		      <input type="text" class="form-control" placeholder="Buscar por nombre...">
+		      <input type="text" class="form-control" placeholder="Buscar por nombre..." data-ng-model="nameSearch">
 		      <span class="input-group-btn">
 		        <button class="btn btn-default" type="button">Buscar</button>
 		      </span>
@@ -19,7 +19,7 @@
 		<div class="row">
 		  <div class="col-md-6 col-md-offset-3">
 		    <div class="input-group">
-		      <input type="text" class="form-control" placeholder="Buscar por localidad...">
+		      <input type="text" class="form-control" placeholder="Buscar por localidad..." data-ng-model="locSearch">
 		      <span class="input-group-btn">
 		        <button class="btn btn-default" type="button">Buscar</button>
 		      </span>
@@ -30,7 +30,7 @@
 		<div class="row">
 		  <div class="col-md-6 col-md-offset-3">
 		    <div class="input-group">
-		      <input type="text" class="form-control" placeholder="Buscar por provincia...">
+		      <input type="text" class="form-control" placeholder="Buscar por provincia..." data-ng-model="provSearch">
 		      <span class="input-group-btn">
 		        <button class="btn btn-default" type="button">Buscar</button>
 		      </span>
@@ -40,7 +40,7 @@
 	<br>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			<div class="list-group" data-ng-repeat="empresa in empresas">
+			<div class="list-group" data-ng-repeat="empresa in empresas | filter: { nombre: nameSearch, localidad: locSearch, provincia: provSearch }">
 		  		<a href="#" class="list-group-item">
 		    		<h4 class="list-group-item-heading">{{empresa.nombre}}</h4>
 		    		<p class="list-group-item-text" data-ng-repeat="sucursal in empresa.sucursales" >{{sucursal.direccion}}</p>
