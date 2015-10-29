@@ -41,11 +41,19 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="list-group" data-ng-repeat="empresa in empresas | filter: { nombre: nameSearch, localidad: locSearch, provincia: provSearch }">
-		  		<a href="#" class="list-group-item">
+				<a data-ng-href="#!/empresas/{{empresa._id}}" class="list-group-item">
 		    		<h4 class="list-group-item-heading">{{empresa.nombre}}</h4>
-		    		<p>{{empresa.telefono}}</p>
-		    		<p>{{empresa.web}}</p>
-		    		<p class="list-group-item-text" data-ng-repeat="sucursal in empresa.sucursales" >{{sucursal.direccion}}</p>
+		    		<div class="row">
+		    			<div class="col-md-4">
+		    			<p>Teléfono: {{empresa.telefono}}</p>
+		    			</div>
+						<div class="col-md-4">
+		    				<p> Web: {{empresa.web}}</p>
+		    			</div>
+		    			<div class="col-md-4">
+		    				<p class="list-group-item-text" data-ng-repeat="sucursal in empresa.sucursales" >{{sucursal.direccion}}</p>
+		    			</div>
+		    		</div>
 		  		</a>
 			</div>
 		</div>

@@ -1,18 +1,28 @@
 <!-- La view artículo -->
 <section data-ng-controller="EmpresasController" data-ng-init="findOne()">
-    <h1 data-ng-bind="empresa.nombre"></h1>
-    <!-- Mostrar los botones de edición para artículo creado -->
-    <div data-ng-show="authentication.user._id == empresa.creador._id">
-        <a href="/#!/empresas/{{empresa._id}}/edit">editar</a>
-        <a href="#" data-ng-click="delete();">borrar</a>
+    <div class="title">
+         <h1 data-ng-bind="empresa.nombre"></h1>
     </div>
-    <small>
-        <em>Publicado el</em>
-        <em data-ng-bind="empresa.creado | date:'mediumDate'"></em>
-        <em>Por</em>
-        <em data-ng-bind="empresa.creador.fullName"></em>
-    </small>
-    <p data-ng-bind="empresa.nombre"></p>
-    <p data-ng-bind="empresa.provincia"></p>
-    <p data-ng-bind="empresa.localidad"></p>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <p>Nombre: {{empresa.nombre}}</p>
+            <p>Teléfono: {{empresa.telefono}}</p>
+            <p>Web: {{empresa.web}}</p>
+            <small>
+                <em>Publicado el</em>
+                <em data-ng-bind="empresa.creado | date:'mediumDate'"></em>
+                <em>Por</em>
+                <em data-ng-bind="empresa.creador.fullName"></em>
+            </small>
+            <br>
+            <br>
+            <!-- Mostrar los botones de edición para artículo creado -->
+            <div data-ng-show="authentication.user._id == empresa.creador._id">
+                <a class="btn btn-danger" href="/#!/empresas/{{empresa._id}}/edit">editar</a>
+                <a class="btn btn-danger" href="#" data-ng-click="delete();">borrar</a>
+                <a class="btn btn-success" href="/">Volver a Lista</a>
+            </div>
+            
+        </div>
+    </div>    
 </section>
