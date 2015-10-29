@@ -2,11 +2,15 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var SucursalSchema = new Schema({
-  nombre: {
+  direccion: {
     type: String,
     default: '',
     trim: true,
-    required: 'El nombre no puede estar en blanco'
+  },
+  telefono: {
+    type: String,
+    default: '',
+    trim: true
   },
   provincia: {
     type: String,
@@ -31,6 +35,16 @@ var EmpresaSchema = new Schema({
     default: '',
     trim: true,
     required: 'El nombre no puede estar en blanco'
+  },
+  telefono: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  web: {
+    type: String,
+    default: '',
+    trim: true
   },
   provincia: {
     type: [String],

@@ -49,15 +49,19 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
             // Usar los campos form para crear un nuevo objeto $resource article
             var empresa = new Empresas({
                 nombre: this.nombre,
+                telefono: this.telefono,
+                web: this.web,
                 provincia: $scope.selection,
                 localidad: $scope.selectionLoc,
                 sucursales:[{
-                    nombre:this.nombreSuc,
+                    direccion:this.direccionSuc,
+                    telefono: this.telefonoSuc,
                     provincia:this.provinciaSuc,
                     localidad:this.localidadSuc
                 },
                 {
-                    nombre:this.nombreSuc2,
+                    direccion:this.direccionSuc2,
+                    telefono: this.telefonoSuc2,
                     provincia:this.provinciaSuc2,
                     localidad:this.localidadSuc2
                 }

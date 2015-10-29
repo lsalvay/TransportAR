@@ -9,6 +9,18 @@
 				<input type="text" data-ng-model="nombre" id="nombre" placeholder="Nombre" required>
 			</div>
 		</div>
+		<div>
+			<label for="nombre">Teléfono Principal</label>
+			<div>
+				<input type="text" data-ng-model="telefono" id="telefono" placeholder="Teléfono Principal" required>
+			</div>
+		</div>
+		<div>
+			<label for="nombre">Página Web</label>
+			<div>
+				<input type="text" data-ng-model="web" id="web" placeholder="Página Web" required>
+			</div>
+		</div>
 
  		<div>
  			<h3>Seleccionar Provincias atendidas</h3>
@@ -35,11 +47,19 @@
 
  		<h3>Cargar sucursales</h3>
  		<div>
-			<label for="titulo">Nombre Sucursal (central)</label>
+			<label for="direccion">Sucursal (central)</label>
 			<div>
-				<input type="text" data-ng-model="nombreSuc" id="nombre" placeholder="NombreSuc" required>
+				<input type="text" data-ng-model="direccionSuc" id="direccion" placeholder="Dirección Sucursal (Central)" required>
 			</div>
 		</div>
+		<br>
+		<div>
+			<label for="telefonoSuc">Teléfono</label>
+			<div>
+				<input type="text" data-ng-model="telefonoSuc" id="telefonoSuc" placeholder="Teléfono Sucursal" required>
+			</div>
+		</div>
+		<br>
 		<div>
 			<select name="provinciaSuc" id="provinciaSuc" data-ng-model="provinciaSuc">
 				<option value="San Juan">San Juan</option>
@@ -48,6 +68,7 @@
 				<option value="Mendoza">Mendoza</option>
 			</select>
 		</div>
+		<br>
 		<div>
 			<select name="localidadSuc" id="localidadSuc" data-ng-model="localidadSuc">
 				<option value="Ullum">Ullum</option>
@@ -56,12 +77,21 @@
 				<option value="Lujan de Cuyo">Lujan de Cuyo</option>
 			</select>
 		</div>
+		<br>
 		<div>
-			<label for="titulo">Nombre Sucursal 2</label>
+			<label for="titulo">Sucursal 2</label>
 			<div>
-				<input type="text" data-ng-model="nombreSuc2" id="nombre" placeholder="NombreSuc2" required>
+				<input type="text" data-ng-model="direccionSuc2" id="direccionSuc2" placeholder="Dirección Sucursal 2" required>
 			</div>
 		</div>
+		<br>
+		<div>
+			<label for="telefonoSuc2">Teléfono</label>
+			<div>
+				<input type="text" data-ng-model="telefonoSuc2" id="telefonoSuc2" placeholder="Teléfono Sucursal" required>
+			</div>
+		</div>
+		<br>
 		<div>
 			<select name="provinciaSuc2" id="provinciaSuc2" data-ng-model="provinciaSuc2">
 				<option value="San Juan">San Juan</option>
@@ -70,6 +100,7 @@
 				<option value="Mendoza">Mendoza</option>
 			</select>
 		</div>
+		<br>
 		<div>
 			<select name="localidadSuc2" id="localidadSuc2" data-ng-model="localidadSuc2">
 				<option value="Ullum">Ullum</option>
