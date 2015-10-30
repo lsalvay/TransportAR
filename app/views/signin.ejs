@@ -23,7 +23,7 @@
   <div class="container">
   <!-- Renderizar el formulario signin -->
   <form class="form-signin" action="/signin" method="post">
-  <h2 class="form-signin-heading">Por favor iniciar Sessión</h2>
+  <h2 class="form-signin-heading">Iniciar Sesión</h2>
   <label for="username" class="sr-only">Usuario</label>
         <input type="text" name="username" id="username" class="form-control" placeholder="Nombre de Usuario" required="" autofocus="">
         <label for="password" class="sr-only">Contraseña</label>
@@ -33,10 +33,14 @@
             <input type="checkbox" value="remember-me"> Remember me
           </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        <br>
+        <a  href="/oauth/google">Login con Google</a>
+        <br>
+        <br>
+        <a class="txt-center" href="/">Volver</a>
   </form>
-  <a href="/oauth/google">Identificarse usando Google</a>
+  
   <% for(var i in messages) { %>
 
   <div class="alert alert-danger" role="alert">

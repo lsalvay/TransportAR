@@ -1,5 +1,5 @@
 module.exports = {
-  db: 'mongodb://localhost/mean4',
+  db: 'mongodb://localhost/mean',
   sessionSecret: 'developmentSessionSecret',
   google: {
     clientID: '670639596360-8lhhv077k22onoi32s29h2h8924j2e2i.apps.googleusercontent.com',

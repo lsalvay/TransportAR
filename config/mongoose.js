@@ -13,8 +13,7 @@ module.exports = function() {
 	// Cargar el modelo 'User' 
 	require('../app/models/user.server.model');
 
-    // Cargar el modelo 'Article'
-	require('../app/models/article.server.model');
+    // Cargar los modelos
 	require('../app/models/empresa.server.model');
 	require('../app/models/localidad.server.model');
 

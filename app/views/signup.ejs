@@ -24,8 +24,8 @@
   <div class="container">
   <!-- Renderizar el formulario signin -->
   <form class="form-signin" action="/signup" method="post">
-  <h2 class="form-signin-heading">Por favor crear usuario</h2>
-        <label for="firstName" class="sr-only">nombre</label>
+  <h2 class="form-signin-heading">Crear usuario</h2>
+        <label for="firstName" class="sr-only">Nombre</label>
         <input type="text" name="firstName" id="firstName" class="form-control" placeholder="Nombre" required="" autofocus="">
         <label for="lastName" class="sr-only">Apellido</label>
         <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Apellido" required="">
@@ -43,9 +43,14 @@
           </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <a href="/oauth/google">Registrarse usando Google</a>
+        <br>
+        <br>
+            <a class="txt-center"  href="/">Volver</a>
+        
     
   </form>
-  <a href="/oauth/google">Registrarse usando Google</a>
+  
    <!-- Mostrar mensajes flash  -->
   <% for(var i in messages) { %>
 
