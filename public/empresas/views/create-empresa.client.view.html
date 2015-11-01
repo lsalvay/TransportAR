@@ -2,26 +2,35 @@
 <section data-ng-controller="EmpresasController">
 	<h1>Agregar Empresa</h1>
 
-
+	<div class="row">
+	<div class="col-md-2">
+	</div>
+	<div class="col-md-8">
 	<form data-ng-submit="create()" novalidate class="form-horizontal">
+	 
 	  <div class="form-group">
 	    <label for="nombre" class="col-sm-2 control-label">Nombre Empresa</label>
 	    <div class="col-sm-10">
 	      <input type="text" class="form-control" data-ng-model="nombre" id="nombre" placeholder="Nombre" required>
 	    </div>
 	  </div>
+	  
+	 
+
 	  <div class="form-group">
 	    <label for="telefono" class="col-sm-2 control-label">Teléfono</label>
 	    <div class="col-sm-10">
 	      <input type="text" class="form-control" data-ng-model="telefono" id="telefono" placeholder="Teléfono Principal" required>
 	    </div>
 	  </div>
+
 	  <div class="form-group">
 	    <label for="pagina" class="col-sm-2 control-label">Página Web</label>
 	    <div class="col-sm-10">
 	      <input type="text" class="form-control" data-ng-model="web" id="web" placeholder="Página Web" required >
 	    </div>
 	  </div>
+
 	  <h3>Seleccionar Provincias atendidas</h3>
 	  <div class="form-group">
     	<div class="col-sm-offset-2 col-sm-10">
@@ -32,6 +41,7 @@
       		</div>
        </div>
   	  </div>
+
   	  <h3>Seleccionar Localidades atendidas por Provincia:</h3>
   	  <div class="form-group">
   	  	<div id="seleccionados" data-ng-model="seleccionados" ng-repeat="seleccionados in selection">
@@ -44,78 +54,113 @@
       		</div>
        </div>
   	  </div>
+  	  </div>
   	  <h3>Cargar sucursales</h3>
-  	  <div class="form-group">
-	    <label for="direccion" class="col-sm-2 control-label">Sucursal (Central)</label>
-	    <div class="col-sm-10">
-	      <input class="form-control" type="text" data-ng-model="direccionSuc" id="direccion" placeholder="Dirección Sucursal (Central)" required>
-	   </div>
 
-	   <div class="form-group">
-	    <label for="telefonoSuc" class="col-sm-2 control-label">Teléfono</label>
-	    <div class="col-sm-10">
-	      <input class="form-control" type="text" data-ng-model="telefonoSuc" id="telefonoSuc" placeholder="Teléfono Sucursal" required>
-	   </div>
-		
-		<div class="form-group">
-			<label for="provinciaSuc" class="col-sm-2 control-label">Provincia</label>
-			<div class="col-sm-10">
-	   		<select class="form-control" name="provinciaSuc" id="provinciaSuc" data-ng-model="provinciaSuc">
-				<option value="San Juan">San Juan</option>
-				<option value="Córdoba">Córdoba</option>
-				<option value="Santa Fe">Santa Fe</option>
-				<option value="Mendoza">Mendoza</option>
-			</select>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="localidadSuc" class="col-sm-2 control-label">Localidad</label>
-			<div class="col-sm-10">
-	   		<select class="form-control" name="localidadSuc" id="localidadSuc" data-ng-model="localidadSuc">
-				<option value="Ullum">Ullum</option>
-				<option value="Villa María">Villa María</option>
-				<option value="Rosario">Rosario</option>
-				<option value="Lujan de Cuyo">Lujan de Cuyo</option>
-			</select>
-			</div>
-		</div>
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		  <div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingOne">
+		      <h4 class="panel-title">
+		        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+		          Sucursal (Central)
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+		      <div class="panel-body">
+		  	  <div class="form-group">
+			    <label for="direccion" class="col-sm-2 control-label">Sucursal (Central)</label>
+			    <div class="col-sm-10">
+			      <input class="form-control" type="text" data-ng-model="direccionSuc" id="direccion" placeholder="Dirección Sucursal (Central)" required>
+			   </div>
+			   </div>
+
+			   <div class="form-group">
+			    <label for="telefonoSuc" class="col-sm-2 control-label">Teléfono</label>
+			    <div class="col-sm-10">
+			      <input class="form-control" type="text" data-ng-model="telefonoSuc" id="telefonoSuc" placeholder="Teléfono Sucursal" required>
+			   </div>
+			   </div>
+				
+				<div class="form-group">
+					<label for="provinciaSuc" class="col-sm-2 control-label">Provincia</label>
+					<div class="col-sm-10">
+			   		<select class="form-control" name="provinciaSuc" id="provinciaSuc" data-ng-model="provinciaSuc">
+						<option value="San Juan">San Juan</option>
+						<option value="Córdoba">Córdoba</option>
+						<option value="Santa Fe">Santa Fe</option>
+						<option value="Mendoza">Mendoza</option>
+					</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="localidadSuc" class="col-sm-2 control-label">Localidad</label>
+					<div class="col-sm-10">
+			   		<select class="form-control" name="localidadSuc" id="localidadSuc" data-ng-model="localidadSuc">
+						<option value="Ullum">Ullum</option>
+						<option value="Villa María">Villa María</option>
+						<option value="Rosario">Rosario</option>
+						<option value="Lujan de Cuyo">Lujan de Cuyo</option>
+					</select>
+					</div>
+				</div>
+				</div>
+		    </div>
+		  </div>
 
 		<!-- sucursal 2 -->
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		  <div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingTwo">
+		      <h4 class="panel-title">
+		        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+		          Sucursal 2
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+		      <div class="panel-body">
+				<div class="form-group">
+			    <label for="direccion2" class="col-sm-2 control-label">Sucursal 2</label>
+			    <div class="col-sm-10">
+			      <input class="form-control" type="text" data-ng-model="direccionSuc2" id="direccion2" placeholder="Dirección Sucursal (Central)" required>
+			   </div>
+			   </div>
 
-		<div class="form-group">
-	    <label for="direccion2" class="col-sm-2 control-label">Sucursal 2</label>
-	    <div class="col-sm-10">
-	      <input class="form-control" type="text" data-ng-model="direccionSuc2" id="direccion2" placeholder="Dirección Sucursal (Central)" required>
-	   </div>
-
-	   <div class="form-group">
-	    <label for="telefonoSuc2" class="col-sm-2 control-label">Teléfono</label>
-	    <div class="col-sm-10">
-	      <input class="form-control" type="text" data-ng-model="telefonoSuc2" id="telefonoSuc2" placeholder="Teléfono Sucursal" required>
-	   </div>
-		
-		<div class="form-group">
-			<label for="provinciaSuc2" class="col-sm-2 control-label">Provincia</label>
-			<div class="col-sm-10">
-	   		<select class="form-control" name="provinciaSuc2" id="provinciaSuc2" data-ng-model="provinciaSuc2">
-				<option value="San Juan">San Juan</option>
-				<option value="Córdoba">Córdoba</option>
-				<option value="Santa Fe">Santa Fe</option>
-				<option value="Mendoza">Mendoza</option>
-			</select>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="localidadSuc2" class="col-sm-2 control-label">Localidad</label>
-			<div class="col-sm-10">
-	   		<select class="form-control" name="localidadSuc2" id="localidadSuc2" data-ng-model="localidadSuc2">
-				<option value="Ullum">Ullum</option>
-				<option value="Villa María">Villa María</option>
-				<option value="Rosario">Rosario</option>
-				<option value="Lujan de Cuyo">Lujan de Cuyo</option>
-			</select>
-			</div>
-		</div>
+			   <div class="form-group">
+			    <label for="telefonoSuc2" class="col-sm-2 control-label">Teléfono</label>
+			    <div class="col-sm-10">
+			      <input class="form-control" type="text" data-ng-model="telefonoSuc2" id="telefonoSuc2" placeholder="Teléfono Sucursal" required>
+			   </div>
+			   </div>
+				
+				<div class="form-group">
+					<label for="provinciaSuc2" class="col-sm-2 control-label">Provincia</label>
+					<div class="col-sm-10">
+			   		<select class="form-control" name="provinciaSuc2" id="provinciaSuc2" data-ng-model="provinciaSuc2">
+						<option value="San Juan">San Juan</option>
+						<option value="Córdoba">Córdoba</option>
+						<option value="Santa Fe">Santa Fe</option>
+						<option value="Mendoza">Mendoza</option>
+					</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="localidadSuc2" class="col-sm-2 control-label">Localidad</label>
+					<div class="col-sm-10">
+			   		<select class="form-control" name="localidadSuc2" id="localidadSuc2" data-ng-model="localidadSuc2">
+						<option value="Ullum">Ullum</option>
+						<option value="Villa María">Villa María</option>
+						<option value="Rosario">Rosario</option>
+						<option value="Lujan de Cuyo">Lujan de Cuyo</option>
+					</select>
+					</div>
+				</div>
+				</div>
+				</div>
+				</div>
+				</div>
+			
 	
 	  
 	  <div class="form-group">
@@ -129,4 +174,7 @@
 			<strong data-ng-bind="error"></strong>
 		</div>
 	</form>
+	<div class="col-md-2">
+	</div>
+	</div>
 </section>
