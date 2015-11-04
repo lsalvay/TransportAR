@@ -6,6 +6,7 @@ body {
 
 .txt-center{
   text-align: center;
+  margin-bottom: 2em;
 }
 .form-signin {
   max-width: 330px;

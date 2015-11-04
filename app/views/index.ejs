@@ -75,13 +75,17 @@
   <div ng-view></div>
   </div>
 
-	<script type="text/javascript">
-    window.user = <%- user || 'null' %>;
-    $('.collapse').collapse();
-    </script>
+	
     <script type="text/javascript" src="/lib/angular/angular.js"></script>
     <script type="text/javascript" src="/lib/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    window.user = <%- user || 'null' %>;
+    $('#myTabs a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+    });
+    </script>
 
 	<script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
 	<script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
