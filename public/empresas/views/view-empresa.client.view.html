@@ -1,28 +1,46 @@
 <!-- La view artículo -->
 <section data-ng-controller="EmpresasController" data-ng-init="findOne()">
-   
-    <h1 class="txt-center" data-ng-bind="empresa.nombre"></h1>
     
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <p>Nombre: {{empresa.nombre}}</p>
-            <p>Teléfono: {{empresa.telefono}}</p>
-            <p>Web: {{empresa.web}}</p>
-            <small>
-                <em>Publicado el</em>
-                <em data-ng-bind="empresa.creado | date:'mediumDate'"></em>
-                <em>Por</em>
-                <em data-ng-bind="empresa.creador.fullName"></em>
-            </small>
-            <br>
-            <br>
-            <!-- Mostrar los botones de edición para artículo creado -->
-            <div data-ng-show="authentication.user._id == empresa.creador._id">
-                <a class="btn btn-danger" href="/#!/empresas/{{empresa._id}}/edit">editar</a>
-                <a class="btn btn-danger" href="#" data-ng-click="delete();">borrar</a>
-                <a class="btn btn-success" href="/">Volver a Lista</a>
+        <div class="col-md-6">
+            <h1>{{empresa.nombre}}</h1>
+            <p><strong>Teléfono: </strong>{{empresa.telefono}}</p>
+            <strong> Web: </strong><a href="http://{{empresa.web}}" target="blank">{{empresa.web}}</a>
+        </div> 
+    </div>
+    <br>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default col-md-4" data-ng-repeat="sucursal in empresa.sucursales">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Sucursal - {{sucursal.localidad}}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p><strong>Dirección: </strong>{{sucursal.direccion}}</p>
+                        <p><strong>Teléfono: </strong>{{sucursal.telefono}}</p>
+                        <p><strong>Provincia: </strong>{{sucursal.provincia}}</p>
+                        <p><strong>Localidad: </strong>{{sucursal.localidad}}</p>
+                    </div>
+                </div> 
             </div>
-            
         </div>
-    </div>    
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <small>
+                    <em>Publicado el</em>
+                    <em data-ng-bind="empresa.creado | date:'mediumDate'"></em>
+                    <em>Por</em>
+                    <em data-ng-bind="empresa.creador.fullName"></em>
+                </small>
+                <br>
+                <br>
+                <!-- Mostrar los botones de edición para artículo creado -->
+                <div data-ng-show="authentication.user._id == empresa.creador._id">
+                    <a class="btn btn-danger" href="/#!/empresas/{{empresa._id}}/edit">editar</a>
+                    <a class="btn btn-danger" href="#" data-ng-click="delete();">borrar</a>
+                    <a class="btn btn-success" href="/">Volver a Lista</a>
+                </div>
+            </div>
+        </div>
 </section>
