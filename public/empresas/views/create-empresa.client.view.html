@@ -3,13 +3,11 @@
 	<h1 class="txt-center">Agregar Empresa</h1>
 
 	<div class="row">
-	<div class="col-md-2">
-	</div>
-	<div class="col-md-8">
+	<div class="col-md-6">
 	<form data-ng-submit="create()" novalidate class="form-horizontal">
 	 
 	  <div class="form-group">
-	    <label for="nombre" class="col-sm-2 control-label">Nombre Empresa</label>
+	    <label for="nombre" class="col-sm-2 control-label"> Empresa</label>
 	    <div class="col-sm-10">
 	      <input type="text" class="form-control" data-ng-model="nombre" id="nombre" placeholder="Nombre" required>
 	    </div>
@@ -22,11 +20,12 @@
 	  </div>
 
 	  <div class="form-group">
-	    <label for="pagina" class="col-sm-2 control-label">Página Web</label>
+	    <label for="pagina" class="col-sm-2 control-label">Web</label>
 	    <div class="col-sm-10">
 	      <input type="text" class="form-control" data-ng-model="web" id="web" placeholder="Página Web" required >
 	    </div>
 	  </div>
+	  <br>
 
 	  <!--Carga de Sucursales -->
 		
@@ -233,8 +232,8 @@
 	<!-- Carga de Provincias y Localidades atendidas -->  
 
 	  <h3>Seleccionar Provincias atendidas</h3>
-	  <div class="form-group">
-    	<div class="col-sm-offset-2 col-sm-10">
+	  <div class="row">
+    	<div class="col-sm-10">
       		<div class="checkbox" ng-repeat="localidad in localidades | unique:'provincia'">
         		<label>
           			<input id="{{localidad.provincia}}" type="checkbox" value="{{localidad.provincia}}" ng-checked="selection.indexOf(localidad.provincia) > -1" ng-click="toggleSelection(localidad.provincia)"> {{localidad.provincia}}
@@ -242,9 +241,8 @@
       		</div>
        </div>
   	  </div>
-
+  	  <br>
   	  <h3>Seleccionar Localidades atendidas por Provincia:</h3>
-  	  
   	  	<div id="seleccionados" data-ng-model="seleccionados" ng-repeat="seleccionados in selection">
   			<h4>{{seleccionados}}</h4>
     	

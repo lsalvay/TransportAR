@@ -47,25 +47,55 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
  // Crear un nuevo método controller para crear nuevos articles
         $scope.create = function() {
             // Usar los campos form para crear un nuevo objeto $resource article
-            var empresa = new Empresas({
+            
+                $scope.sucursales=[];
+                if(this.direccionSuc!=null){
+                    var Sucursal1={
+                    direccion:this.direccionSuc,
+                    telefono: this.telefonoSuc,
+                    provincia:this.provinciaSuc,
+                    localidad:this.localidadSuc
+                    };
+                $scope.sucursales.push(Sucursal1);
+                }
+
+                if(this.direccionSuc2!=null){
+                    var Sucursal2={
+                    direccion:this.direccionSuc2,
+                    telefono: this.telefonoSuc2,
+                    provincia:this.provinciaSuc2,
+                    localidad:this.localidadSuc2
+                    };
+                    $scope.sucursales.push(Sucursal2);
+                }
+                
+                if(this.direccionSuc3!=null){
+                    var Sucursal3={
+                    direccion:this.direccionSuc3,
+                    telefono: this.telefonoSuc3,
+                    provincia:this.provinciaSuc3,
+                    localidad:this.localidadSuc3
+                    };
+                    $scope.sucursales.push(Sucursal3);
+                }
+                
+                 if(this.direccionSuc4!=null){
+                    var Sucursal4={
+                    direccion:this.direccionSuc4,
+                    telefono: this.telefonoSuc4,
+                    provincia:this.provinciaSuc4,
+                    localidad:this.localidadSuc4
+                    };
+                    $scope.sucursales.push(Sucursal4);
+                }
+
+                var empresa = new Empresas({
                 nombre: this.nombre,
                 telefono: this.telefono,
                 web: this.web,
                 provincia: $scope.selection,
                 localidad: $scope.selectionLoc,
-                sucursales:[{
-                    direccion:this.direccionSuc,
-                    telefono: this.telefonoSuc,
-                    provincia:this.provinciaSuc,
-                    localidad:this.localidadSuc
-                },
-                {
-                    direccion:this.direccionSuc2,
-                    telefono: this.telefonoSuc2,
-                    provincia:this.provinciaSuc2,
-                    localidad:this.localidadSuc2
-                }
-                ] 
+                sucursales: $scope.sucursales
                 
             });
 
