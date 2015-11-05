@@ -1,25 +1,32 @@
 <!-- La view listar artículos -->
 <section data-ng-controller="LocalidadesController" data-ng-init="find()">
-	<h1>Localidades</h1>
-	<ul>
-		<!-- La lista de artículos -->
-		<li data-ng-repeat="localidad in localidades">
-			<a data-ng-href="#!/localidades/{{localidad._id}}" data-ng-bind="localidad.nombre"></a>
-			<br>
-			<small data-ng-bind="localidad.creado | date:'medium'"></small>
-			<small>/</small>
-			<small data-ng-bind="localidad.creador.fullName"></small>
-			<p data-ng-bind="localidad.provincia"></p>
-			
-			<!-- Mostrar los botones de edición para artículo creado -->
-    <p data-ng-show="authentication.user._id == localidad.creador._id">
-        <a href="/#!/localidades/{{localidad._id}}/edit">editar</a>
-        <a href="/#!/localidades/{{localidad._id}}" data-ng-click="delete();">borrar</a>
-    </p>
-		</li>
-	</ul>
+	<h1 class="txt-center">Localidades</h1>
+
 	<!-- Si no hay artículos en la lista, sugire al usuario que cree un nuevo artículo -->
 	<div data-ng-hide="!localidades || localidades.length">
 		Aún no hay localidades, porque no creas <a href="/#!/localidades/create">la primera</a>?
+	</div>
+
+	
+	<div class="row">
+	<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<div class="panel panel-default" ng-repeat="localidad in localidades | unique:'provincia'" >
+		  		<!-- Default panel contents -->
+		  		<div class="panel-heading">{{localidad.provincia}}
+		  		</div>
+		  			<!-- List group -->
+		  		<ul class="list-group">
+		    		<li class="list-group-item"  ng-repeat="localidad in localidades | filter: { provincia: localidad.provincia }">
+		    		{{localidad.nombre}}
+						<div class="pull-right" data-ng-show="authentication.user._id == localidad.creador._id">
+		        			<a href="/#!/localidades/{{localidad._id}}/edit">editar</a>
+		        			<a href="/#!/localidades/{{localidad._id}}" data-ng-click="delete();">borrar</a>
+		    			</div>
+		    		</li>
+		    	</ul>
+			</div>
+		</div>
+		<div class="col-md-3"></div>
 	</div>
 </section>
