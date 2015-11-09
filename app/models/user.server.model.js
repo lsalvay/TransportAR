@@ -68,7 +68,6 @@ UserSchema.pre('save', function(next) {
 
   next();
 });
-
 //Crear un método instancia para hashing una contraseña
 UserSchema.methods.hashPassword = function(password) {
   return crypto.pbkdf2Sync(password, this.salt, 10000, 64).toString('base64');

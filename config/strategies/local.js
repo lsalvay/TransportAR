@@ -10,6 +10,7 @@ var passport = require('passport'),
 module.exports = function() {
   // Usar la estrategia local de Passport 
   passport.use(new LocalStrategy(function(username, password, done) {
+
     // Usar el método 'findOne' de 'User'  para encontrar un usuario con el nombre de usuario actual
     User.findOne({
       username: username
@@ -35,6 +36,7 @@ module.exports = function() {
       
       // En otro caso, continuar al siguiente middleware con el objeto user
       return done(null, user);
+
     });
   }));
 };

@@ -59,18 +59,8 @@
 					<label for="provinciaSuc" class="col-sm-2 control-label">Provincia:</label>
 					<div class="col-sm-10">
 			   		<select class="form-control" name="provinciaSuc" id="provinciaSuc" data-ng-model="provinciaSuc">
-						<option value="San Juan">San Juan</option>
-						<option value="Córdoba">Córdoba</option>
-						<option value="Santa Fe">Santa Fe</option>
-						<option value="Mendoza">Mendoza</option>
-						<option value="La Rioja">La Rioja</option>
-						<option value="Buenos Aires">Buenos Aires</option>
-						<option value="Jujuy">Jujuy</option>
-						<option value="Entre Ríos">Entre Ríos</option>
-						<option value="Chubut">Chubut</option>
-						<option value="Santiago del Estero">Santiago del Estero</option>
-						<option value="Tierra del Fuego">Tierra del Fuego</option>
-						<option value="Santa Cruz">Santa Cruz</option>
+						<option ng-repeat="localidad in localidades | unique:'provincia'" value="{{localidad.provincia}}">{{localidad.provincia}}</option>
+						
 					</select>
 					</div>
 				</div>
@@ -78,10 +68,9 @@
 					<label for="localidadSuc" class="col-sm-2 control-label">Localidad:</label>
 					<div class="col-sm-10">
 			   		<select class="form-control" name="localidadSuc" id="localidadSuc" data-ng-model="localidadSuc">
-						<option value="Ullum">Ullum</option>
-						<option value="Villa María">Villa María</option>
-						<option value="Rosario">Rosario</option>
-						<option value="Lujan de Cuyo">Lujan de Cuyo</option>
+			   			<optgroup ng-repeat="localidad in localidades | unique:'provincia'" label="{{localidad.provincia}}">
+							<option ng-repeat="local in localidades | filter: { provincia: localidad.provincia }" value="{{local.nombre}}">{{local.nombre}}</option>
+						</optgroup>
 					</select>
 					</div>
 				</div>
@@ -105,18 +94,7 @@
 					<label for="provinciaSuc2" class="col-sm-2 control-label">Provincia:</label>
 					<div class="col-sm-10">
 			   		<select class="form-control" name="provinciaSuc2" id="provinciaSuc2" data-ng-model="provinciaSuc2">
-						<option value="San Juan">San Juan</option>
-						<option value="Córdoba">Córdoba</option>
-						<option value="Santa Fe">Santa Fe</option>
-						<option value="Mendoza">Mendoza</option>
-						<option value="La Rioja">La Rioja</option>
-						<option value="Buenos Aires">Buenos Aires</option>
-						<option value="Jujuy">Jujuy</option>
-						<option value="Entre Ríos">Entre Ríos</option>
-						<option value="Chubut">Chubut</option>
-						<option value="Santiago del Estero">Santiago del Estero</option>
-						<option value="Tierra del Fuego">Tierra del Fuego</option>
-						<option value="Santa Cruz">Santa Cruz</option>
+						<option ng-repeat="localidad in localidades | unique:'provincia'" value="{{localidad.provincia}}">{{localidad.provincia}}</option>
 					</select>
 					</div>
 				</div>
@@ -124,10 +102,9 @@
 					<label for="localidadSuc2" class="col-sm-2 control-label">Localidad:</label>
 					<div class="col-sm-10">
 			   		<select class="form-control" name="localidadSuc2" id="localidadSuc2" data-ng-model="localidadSuc2">
-						<option value="Ullum">Ullum</option>
-						<option value="Villa María">Villa María</option>
-						<option value="Rosario">Rosario</option>
-						<option value="Lujan de Cuyo">Lujan de Cuyo</option>
+						<optgroup ng-repeat="localidad in localidades | unique:'provincia'" label="{{localidad.provincia}}">
+							<option ng-repeat="local in localidades | filter: { provincia: localidad.provincia }" value="{{local.nombre}}">{{local.nombre}}</option>
+						</optgroup>
 					</select>
 					</div>
 				</div>
@@ -151,18 +128,7 @@
 					<label for="provinciaSuc3" class="col-sm-2 control-label">Provincia:</label>
 					<div class="col-sm-10">
 			   		<select class="form-control" name="provinciaSuc3" id="provinciaSuc3" data-ng-model="provinciaSuc3">
-						<option value="San Juan">San Juan</option>
-						<option value="Córdoba">Córdoba</option>
-						<option value="Santa Fe">Santa Fe</option>
-						<option value="Mendoza">Mendoza</option>
-						<option value="La Rioja">La Rioja</option>
-						<option value="Buenos Aires">Buenos Aires</option>
-						<option value="Jujuy">Jujuy</option>
-						<option value="Entre Ríos">Entre Ríos</option>
-						<option value="Chubut">Chubut</option>
-						<option value="Santiago del Estero">Santiago del Estero</option>
-						<option value="Tierra del Fuego">Tierra del Fuego</option>
-						<option value="Santa Cruz">Santa Cruz</option>
+						<option ng-repeat="localidad in localidades | unique:'provincia'" value="{{localidad.provincia}}">{{localidad.provincia}}</option>
 					</select>
 					</div>
 				</div>
@@ -170,10 +136,9 @@
 					<label for="localidadSuc3" class="col-sm-2 control-label">Localidad:</label>
 					<div class="col-sm-10">
 			   		<select class="form-control" name="localidadSuc3" id="localidadSuc3" data-ng-model="localidadSuc3">
-						<option value="Ullum">Ullum</option>
-						<option value="Villa María">Villa María</option>
-						<option value="Rosario">Rosario</option>
-						<option value="Lujan de Cuyo">Lujan de Cuyo</option>
+						<optgroup ng-repeat="localidad in localidades | unique:'provincia'" label="{{localidad.provincia}}">
+							<option ng-repeat="local in localidades | filter: { provincia: localidad.provincia }" value="{{local.nombre}}">{{local.nombre}}</option>
+						</optgroup>
 					</select>
 					</div>
 				</div>
@@ -197,18 +162,7 @@
 					<label for="provinciaSuc4" class="col-sm-2 control-label">Provincia:</label>
 					<div class="col-sm-10">
 			   		<select class="form-control" name="provinciaSuc4" id="provinciaSuc4" data-ng-model="provinciaSuc4">
-						<option value="San Juan">San Juan</option>
-						<option value="Córdoba">Córdoba</option>
-						<option value="Santa Fe">Santa Fe</option>
-						<option value="Mendoza">Mendoza</option>
-						<option value="La Rioja">La Rioja</option>
-						<option value="Buenos Aires">Buenos Aires</option>
-						<option value="Jujuy">Jujuy</option>
-						<option value="Entre Ríos">Entre Ríos</option>
-						<option value="Chubut">Chubut</option>
-						<option value="Santiago del Estero">Santiago del Estero</option>
-						<option value="Tierra del Fuego">Tierra del Fuego</option>
-						<option value="Santa Cruz">Santa Cruz</option>
+						<option ng-repeat="localidad in localidades | unique:'provincia'" value="{{localidad.provincia}}">{{localidad.provincia}}</option>
 					</select>
 					</div>
 				</div>
@@ -216,10 +170,9 @@
 					<label for="localidadSuc4" class="col-sm-2 control-label">Localidad:</label>
 					<div class="col-sm-10">
 			   		<select class="form-control" name="localidadSuc4" id="localidadSuc4" data-ng-model="localidadSuc4">
-						<option value="Ullum">Ullum</option>
-						<option value="Villa María">Villa María</option>
-						<option value="Rosario">Rosario</option>
-						<option value="Lujan de Cuyo">Lujan de Cuyo</option>
+						<optgroup ng-repeat="localidad in localidades | unique:'provincia'" label="{{localidad.provincia}}">
+							<option ng-repeat="local in localidades | filter: { provincia: localidad.provincia }" value="{{local.nombre}}">{{local.nombre}}</option>
+						</optgroup>
 					</select>
 					</div>
 				</div>

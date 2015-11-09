@@ -37,7 +37,7 @@
 	<!-- Inicio Lista Empresas-->	
 	<div class="row">
 		<div class="col-md-12">
-			<div class="list-group" data-ng-repeat="empresa in empresas | filter: { nombre: nameSearch, localidad: locSearch, provincia: provSearch }">
+			<div class="list-group" data-ng-repeat="empresa in empresas | myFilter: { nombre: nameSearch, localidad: locSearch, provincia: provSearch }">
 				
 		    		<div class="row list-group-item">
 		    			<div class="col-md-3">
