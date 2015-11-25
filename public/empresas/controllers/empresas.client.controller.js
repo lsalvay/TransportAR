@@ -1,10 +1,12 @@
 // Invocar modo JavaScript 'strict'
 'use strict';
+var zona =[];
 
 // Crear el controller 'articles'
 angular.module('empresas').controller('EmpresasController', ['$scope', '$routeParams', '$location', 'Authentication', 'Empresas', '$http', 'Localidades',
     function($scope, $routeParams, $location, Authentication, Empresas, $http, Localidades) {
         // Exponer el service Authentication
+        
         $scope.authentication = Authentication;
         $http.get('http://localhost:3000/api/localidades')
        .then(function(res){
@@ -42,7 +44,9 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
         }
         }; 
                 
-        });      
+        });
+
+
 
  // Crear un nuevo método controller para crear nuevos articles
         $scope.create = function() {
@@ -95,7 +99,12 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
                 web: this.web,
                 provincia: $scope.selection,
                 localidad: $scope.selectionLoc,
-                sucursales: $scope.sucursales
+                sucursales: $scope.sucursales,
+                zona:{
+                    "type": "Polygon",
+                    "coordinates":null
+
+                } 
                 
             });
 
@@ -190,4 +199,80 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
    
   return myFilter;
    
-}]);
+}]).directive("myDirective", function(){
+
+    return{
+        restrict: 'E',
+        template: '<div></div>',
+        replace: true,
+        link: function(scope, element, attrs){
+            var myLatLong = new google.maps.LatLng(-33.7859831,-63.7955673);
+            var mapOptions = {
+                center: myLatLong,
+                zoom: 6,
+                mapTypeId: google.maps.MapTypeId.TERRAIN
+            }; 
+            var map = new google.maps.Map(document.getElementById(attrs.id),
+                mapOptions);
+             var triangleCoords = [
+              {lat: -28.70408061020613, lng: -61.241455078125},
+              {lat: -29.231268861253753, lng: -62.528076171875},
+              {lat: -30.684803923910714, lng: -65.05035400390625},
+              {lat: -31.70644501798348, lng: -65.0238037109375},
+              {lat: -34.98593222251521, lng: -58.466796875},
+              {lat: -33.62209381491508, lng: -58.55560302734375},
+              {lat: -31.863849655116105, lng:-59.9627685546875 },
+              {lat:-28.709459223613344, lng:-59.744873046875 }
+            ];
+
+            var defaultZone = new google.maps.Polygon({
+                paths: triangleCoords,
+                editable: true,
+                strokeColor: '#FF0000',
+                strokeOpacity: 0.8,
+                strokeWeight: 3,
+                fillColor: '#FF0000',
+                fillOpacity: 0.35
+            });
+            defaultZone.setMap(map);
+
+              // Add a listener for the click event.
+            defaultZone.addListener('click', showArrays);
+            var infoWindow = new google.maps.InfoWindow;
+
+            function showArrays(event, $scope) {
+              // Since this polygon has only one path, we can call getPath() to return the
+              // MVCArray of LatLngs.
+              var vertices = this.getPath();
+
+              var contentString = '<b>Zona Atendida</b><br>' +
+                  'Clicked location: <br>' + event.latLng.lat() + ',' + event.latLng.lng() +
+                  '<br>';
+
+              // Iterate over the vertices.
+              for (var i =0; i < vertices.getLength(); i++) {
+                var xy = vertices.getAt(i);
+                contentString += '<br>' + 'Coordinate ' + i + ':<br>' + xy.lat() + ',' +
+                    xy.lng();
+                zona.push(
+                    {   
+                    "lat": xy.lat(),
+                    "lng": xy.lng()
+                    }
+                    );
+                console.log(zona[i].lat, zona[i].lng);
+              }  
+
+              // Replace the info window's content and position.
+              infoWindow.setContent(contentString);
+              infoWindow.setPosition(event.latLng);
+
+              infoWindow.open(map);
+
+              var isWithinPolygon = google.maps.geometry.poly.containsLocation(event.latLng, this);
+                console.log(isWithinPolygon);
+            }   
+        }
+    };
+});
+

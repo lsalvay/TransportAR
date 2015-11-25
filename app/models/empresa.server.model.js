@@ -60,7 +60,15 @@ var EmpresaSchema = new Schema({
   creador: {
     type: Schema.ObjectId,
     ref: 'User'
-  }
+  },
+  zona: {
+    type: String,
+    coordinates: {
+      type:[Number],
+      default: '',
+      trim: true
+    }
+  },
 });
 
 mongoose.model('Empresa', EmpresaSchema);

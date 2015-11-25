@@ -1,21 +1,21 @@
 var  cordoba  =  db.localidads.initializeUnorderedBulkOp (); 
-cordoba.insert (  {  nombre :  "ACHIRAS" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  ); 
-cordoba.insert (  {  nombre :  "ADELIA MARIA" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  ); 
-cordoba.insert (  {  nombre :  "AGUA DE ORO" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
-cordoba.insert (  {  nombre :  "ALCIRA GIGENA" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
-cordoba.insert (  {  nombre :  "ALEJANDRO" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
-cordoba.insert (  {  nombre :  "ALEJO LEDESMA" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
-cordoba.insert (  {  nombre :  "ALICIA" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
-cordoba.insert (  {  nombre :  "ALMAFUERTE" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
-cordoba.insert (  {  nombre :  "ALPA CORRAL" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
-cordoba.insert (  {  nombre :  "ALTA GRACIA" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
-cordoba.insert (  {  nombre :  "ALTO ALEGRE" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
-cordoba.insert (  {  nombre :  "ALTO DE SAN PEDRO" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
-cordoba.insert (  {  nombre :  "ALTO GRANDE" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
-cordoba.insert (  {  nombre :  "ALTO VERDE" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
-cordoba.insert (  {  nombre :  "ALTOS DE CHIPION" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
-cordoba.insert (  {  nombre :  "AMBUL" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
-cordoba.insert (  {  nombre :  "ANA ZUMARAN" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Achiras" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  ); 
+cordoba.insert (  {  nombre :  "Adelia María" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  ); 
+cordoba.insert (  {  nombre :  "Agua de Oro" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Alcira Gigena" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Alejandro" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Alejo Ledesma" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Alicia" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Almafuerte" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Alpa Corral" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Alta Gracia" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Alto Alegre" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Alto de San Pedro" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Alto Grande" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Alto Verde" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Altos de Chipion" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Ambul" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Ana Zumaran" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
 cordoba.insert (  {  nombre :  "Anisacate" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
 cordoba.insert (  {  nombre :  "Arguello" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
 cordoba.insert (  {  nombre :  "Arias" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
@@ -35,126 +35,126 @@ cordoba.insert (  {  nombre :  "Bengolea" ,  provincia : "Córdoba", creador : "
 cordoba.insert (  {  nombre :  "Benjamin Gould" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
 cordoba.insert (  {  nombre :  "Berrotaran" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
 cordoba.insert (  {  nombre :  "Bialet Masse" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
-
+cordoba.insert (  {  nombre :  "Berrotaran" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Bialet Masse" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Bouwer" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Brinkmann" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Buchardo" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Bulnes" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Cabalango" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Calamuchita" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Calchin" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Calchin Oeste" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Calmayo" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Camilo Aldao" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Caminiaga" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Cañada de Luque" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Cañada de Machado" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Cañada de Rio Pinto" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Cañada del Sauce" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Canals" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Candelaria Sud" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Capilla de Remedios" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Capilla de Siton" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Capilla del Carmen" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Capilla del Monte" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Capital" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Capitan Gral B. O´Higgins" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Carnerillo" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Carrilobo" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Casa Grande" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Cavanagh" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Cerro Colorado" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Chaján" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Chalacea" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Chañar Viejo" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Chancaní" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Charbonier" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Charras" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Chazón" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Chilibroste" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Chucul" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Chuña" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Chuña Huasi" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Churqui Cañada" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Cienaga Del Coro" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Cintra" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Col. Almada" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Col. Anita" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Col. Barge" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Col. Bismark" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Col. Bremen" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Col. Caroya" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Col. Italiana" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Col. Iturraspe" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Col. Las Cuatro Esquinas" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Col. Las Pichanas" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Col. Marina" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Col. Prosperidad" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Col. San Bartolome" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Col. San Pedro" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Col. Tirolesa" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Col. Vicente Aguero" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Col. Videla" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Col. Vignaud" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Col. Waltelina" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Colazo" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Comechingones" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Conlara" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Copacabana" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Córdoba" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Coronel Baigorria" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Coronel Moldes" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Corral de Bustos" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Corralito" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Cosquín" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Costa Sacate" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Cruz Alta" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Cruz de Caña" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Cruz del Eje" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Cuesta Blanca" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Dean Funes" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Del Campillo" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Despeñaderos" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Devoto" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Diego de Rojas" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Dique Chico" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "El Arañado" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "El Brete" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "El Chacho" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "El Crispín" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "El Fortín" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "El Manzano" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "El Rastreador" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "El Rodeo" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "El Tío" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Elena" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Embalse" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Esquina" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Estación Gral. Paz" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Estación Juárez Celman" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Estancia de Guadalupe" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Estancia Vieja" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Etruria" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Eufrasio Loza" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Falda del Carmen" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Freyre" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Gral. Baldissera" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Gral. Cabrera" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Gral. Deheza" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Gral. Fotheringham" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Gral. Levalle" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Gral. Roca" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Guanaco Muerto" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Guasapampa" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Guatimozin" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Gutenberg" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Hernando" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "Huanchillas" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
+cordoba.insert (  {  nombre :  "" ,  provincia : "Córdoba", creador : "563b72e1b446bebc3a749a6d"}  );
 
 cordoba.execute ();
 
-Berrotaran
-Bialet Masse
-Bouwer
-Brinkmann
-Buchardo
-Bulnes
-Cabalango
-Calamuchita
-Calchin
-Calchin Oeste
-Calmayo
-Camilo Aldao
-Caminiaga
-Cañada de Luque
-Cañada de Machado
-Cañada de Rio Pinto
-Cañada del Sauce
-Canals
-Candelaria Sud
-Capilla de Remedios
-Capilla de Siton
-Capilla del Carmen
-Capilla del Monte
-Capital
-Capitan Gral B. O´Higgins
-Carnerillo
-Carrilobo
-Casa Grande
-Cavanagh
-Cerro Colorado
-Chaján
-Chalacea
-Chañar Viejo
-Chancaní
-Charbonier
-Charras
-Chazón
-Chilibroste
-Chucul
-Chuña
-Chuña Huasi
-Churqui Cañada
-Cienaga Del Coro
-Cintra
-Col. Almada
-Col. Anita
-Col. Barge
-Col. Bismark
-Col. Bremen
-Col. Caroya
-Col. Italiana
-Col. Iturraspe
-Col. Las Cuatro Esquinas
-Col. Las Pichanas
-Col. Marina
-Col. Prosperidad
-Col. San Bartolome
-Col. San Pedro
-Col. Tirolesa
-Col. Vicente Aguero
-Col. Videla
-Col. Vignaud
-Col. Waltelina
-Colazo
-Comechingones
-Conlara
-Copacabana
-Córdoba
-Coronel Baigorria
-Coronel Moldes
-Corral de Bustos
-Corralito
-Cosquín
-Costa Sacate
-Cruz Alta
-Cruz de Caña
-Cruz del Eje
-Cuesta Blanca
-Dean Funes
-Del Campillo
-Despeñaderos
-Devoto
-Diego de Rojas
-Dique Chico
-El Arañado
-El Brete
-El Chacho
-El Crispín
-El Fortín
-El Manzano
-El Rastreador
-El Rodeo
-El Tío
-Elena
-Embalse
-Esquina
-Estación Gral. Paz
-Estación Juárez Celman
-Estancia de Guadalupe
-Estancia Vieja
-Etruria
-Eufrasio Loza
-Falda del Carmen
-Freyre
-Gral. Baldissera
-Gral. Cabrera
-Gral. Deheza
-Gral. Fotheringham
-Gral. Levalle
-Gral. Roca
-Guanaco Muerto
-Guasapampa
-Guatimozin
-Gutenberg
-Hernando
-Huanchillas
 Huerta Grande
 Huinca Renanco
 Idiazabal
