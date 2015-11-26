@@ -102,7 +102,7 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
                 sucursales: $scope.sucursales,
                 zona:{
                     "type": "Polygon",
-                    "coordinates":null
+                    "coordinates":$scope.tempCoordenadas
 
                 } 
                 
@@ -236,6 +236,26 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
             });
             defaultZone.setMap(map);
 
+            // Identifica cuando los puntos del poligono son movidos 
+            defaultZone.addListener('mouseup',function(event){
+                var vertices = this.getPath();
+                
+                var coordenadas = [];
+                for (var i =0; i < vertices.getLength(); i++) {
+                    var xy = vertices.getAt(i);
+                    coordenadas.push(
+                        [  
+                        xy.lat(),
+                        xy.lng()
+                        ]
+                        );
+                }
+
+            // Asigna las coordenadas del poligono 
+            scope.tempCoordenadas=    coordenadas;
+
+
+            })
               // Add a listener for the click event.
             defaultZone.addListener('click', showArrays);
             var infoWindow = new google.maps.InfoWindow;

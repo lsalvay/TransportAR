@@ -62,11 +62,10 @@ var EmpresaSchema = new Schema({
     ref: 'User'
   },
   zona: {
-    type: String,
+    type: {type: String},
     coordinates: {
-      type:[Number],
-      default: '',
-      trim: true
+      type:[],
+      default: []
     }
   },
 });
