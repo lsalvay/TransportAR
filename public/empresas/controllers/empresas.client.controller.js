@@ -12,38 +12,7 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
        .then(function(res){
           $scope.localidades = res.data;
 
-        $scope.selection=[];
-        // toggle selection for a given employee by name
-        $scope.toggleSelection = function toggleSelection(provinciaNombre) {
-        var idx = $scope.selection.indexOf(provinciaNombre);
-
-        // is currently selected
-        if (idx > -1) {
-            $scope.selection.splice(idx, 1);
-        }
-
-        // is newly selected
-        else {
-            $scope.selection.push(provinciaNombre);
-        }
-        }; 
-        
-        $scope.selectionLoc=[];
-        // toggle selection for a given employee by name
-        $scope.toggleSelectionLoc = function toggleSelectionLoc(localidadNombre) {
-        var idx = $scope.selectionLoc.indexOf(localidadNombre);
-
-        // is currently selected
-        if (idx > -1) {
-            $scope.selectionLoc.splice(idx, 1);
-        }
-
-        // is newly selected
-        else {
-            $scope.selectionLoc.push(localidadNombre);
-        }
-        }; 
-                
+                       
         });
 
 
@@ -97,8 +66,6 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
                 nombre: this.nombre,
                 telefono: this.telefono,
                 web: this.web,
-                provincia: $scope.selection,
-                localidad: $scope.selectionLoc,
                 sucursales: $scope.sucursales,
                 zona:{
                     "type": "Polygon",
@@ -256,42 +223,7 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
 
 
             })
-              // Add a listener for the click event.
-            defaultZone.addListener('click', showArrays);
-            var infoWindow = new google.maps.InfoWindow;
-
-            function showArrays(event, $scope) {
-              // Since this polygon has only one path, we can call getPath() to return the
-              // MVCArray of LatLngs.
-              var vertices = this.getPath();
-
-              var contentString = '<b>Zona Atendida</b><br>' +
-                  'Clicked location: <br>' + event.latLng.lat() + ',' + event.latLng.lng() +
-                  '<br>';
-
-              // Iterate over the vertices.
-              for (var i =0; i < vertices.getLength(); i++) {
-                var xy = vertices.getAt(i);
-                contentString += '<br>' + 'Coordinate ' + i + ':<br>' + xy.lat() + ',' +
-                    xy.lng();
-                zona.push(
-                    {   
-                    "lat": xy.lat(),
-                    "lng": xy.lng()
-                    }
-                    );
-                console.log(zona[i].lat, zona[i].lng);
-              }  
-
-              // Replace the info window's content and position.
-              infoWindow.setContent(contentString);
-              infoWindow.setPosition(event.latLng);
-
-              infoWindow.open(map);
-
-              var isWithinPolygon = google.maps.geometry.poly.containsLocation(event.latLng, this);
-                console.log(isWithinPolygon);
-            }   
+            
         }
     };
 });

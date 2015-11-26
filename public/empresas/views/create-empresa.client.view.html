@@ -203,41 +203,7 @@
 
 
 
-	<!-- Carga de Provincias y Localidades atendidas -->  
-		
-	  <h3>Seleccionar Provincias atendidas</h3>
-	  <div class="row">
-    	<div class="col-sm-10">
-      		<div class="checkbox" ng-repeat="localidad in localidades | unique:'provincia'">
-        		<label>
-          			<input id="{{localidad.provincia}}" type="checkbox" value="{{localidad.provincia}}" ng-checked="selection.indexOf(localidad.provincia) > -1" ng-click="toggleSelection(localidad.provincia)"> {{localidad.provincia}}
-        		</label>
-      		</div>
-       </div>
-  	  </div>
-  	  <br>
-  	  <br>
-  	  <h3>Seleccionar Localidades atendidas por Provincia:</h3>
-  	  <br>
-	<div class="row">
-	<div class="col-md-3"></div>
-		<div class="col-md-6">
-			<div class="panel panel-default" id="seleccionados" data-ng-model="seleccionados" ng-repeat="seleccionados in selection" >
-		  		<!-- Default panel contents -->
-		  		<div class="panel-heading">{{seleccionados}}
-		  		</div>
-		  			<!-- List group -->
-		  		<ul class="list-group">
-		    		<li class="list-group-item"  ng-repeat="localidad in localidades | filter: { provincia: seleccionados }">
-		    		<input id="{{localidad.nombre}}" type="checkbox" value="{{localidad.nombre}}" ng-checked="selectionLoc.indexOf(localidad.nombre) > -1" ng-click="toggleSelectionLoc(localidad.nombre)" >
-		    		{{localidad.nombre}}
-		    		</li>
-		    	</ul>
-			</div>
-		</div>
-		<div class="col-md-3"></div>
-	</div>	
-	<br>
+	
 		
 		<!-- El elemento mensaje de error -->
 		<div class="alert alert-danger" role="alert" data-ng-show="error">
