@@ -46,16 +46,6 @@ var EmpresaSchema = new Schema({
     default: '',
     trim: true
   },
-  provincia: {
-    type: [String],
-    default: '',
-    trim: true
-  },
-  localidad: {
-    type: [String],
-    default: '',
-    trim: true
-  },
   sucursales : [SucursalSchema],
   creador: {
     type: Schema.ObjectId,
