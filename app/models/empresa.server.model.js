@@ -60,4 +60,6 @@ var EmpresaSchema = new Schema({
   },
 });
 
+EmpresaSchema.index({ zona: '2dsphere' });
+
 mongoose.model('Empresa', EmpresaSchema);
