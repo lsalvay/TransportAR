@@ -1,4 +1,4 @@
-// Invocar modo JavaScript 'strict' 
+// Invocar modo JavaScript 'strict'
 'use strict';
 
 // Cargar las dependencias del módulo
@@ -23,7 +23,7 @@ exports.create = function(req, res) {
 
 	// Configurar la propiedad 'creador' del artículo
 	empresa.creador = req.user;
-	
+
 
 	// Intentar salvar el artículo
 	empresa.save(function(err) {
@@ -33,7 +33,7 @@ exports.create = function(req, res) {
 				message: getErrorMessage(err)
 			});
 		} else {
-			// Enviar una representación JSON del artículo 
+			// Enviar una representación JSON del artículo
 			res.json(empresa);
 		}
 	});
@@ -41,18 +41,29 @@ exports.create = function(req, res) {
 
 // Crear un nuevo método controller que recupera una lista de artículos
 exports.list = function(req, res) {
+	//obtener el parametro de busqueda de empresas
+	var search = req.param('search');
+	var parametroBusqueda = {};
+
+	if ( search !== undefined ){
+		parametroBusqueda = {"nombre":{'$regex':search}}
+	}
+
 	// Usar el método model 'find' para obtener una lista de artículos
-	Empresa.find().sort('-creado').populate('creador', 'firstName lastName fullName').exec(function(err, empresas) {
+	Empresa.find(parametroBusqueda).sort('-creado').populate('creador', 'firstName lastName fullName').exec(function(err, empresas) {
 		if (err) {
 			// Si un error ocurre enviar un mensaje de error
 			return res.status(400).send({
 				message: getErrorMessage(err)
 			});
 		} else {
-			// Enviar una representación JSON del artículo 
+			// Enviar una representación JSON del artículo
 			res.json(empresas);
 		}
 	});
+
+
+
 };
 
 // Crear un nuevo método controller que devuelve un artículo existente
@@ -79,7 +90,7 @@ exports.update = function(req, res) {
 				message: getErrorMessage(err)
 			});
 		} else {
-			// Enviar una representación JSON del artículo 
+			// Enviar una representación JSON del artículo
 			res.json(empresa);
 		}
 	});
@@ -98,7 +109,7 @@ exports.delete = function(req, res) {
 				message: getErrorMessage(err)
 			});
 		} else {
-			// Enviar una representación JSON del artículo 
+			// Enviar una representación JSON del artículo
 			res.json(empresa);
 		}
 	});
@@ -106,7 +117,7 @@ exports.delete = function(req, res) {
 
 // Crear un nuevo controller middleware que recupera un único artículo existente
 exports.empresaByID = function(req, res, next, id) {
-	// Usar el método model 'findById' para encontrar un único artículo 
+	// Usar el método model 'findById' para encontrar un único artículo
 	Empresa.findById(id).populate('creador', 'firstName lastName fullName').exec(function(err, empresa) {
 		if (err) return next(err);
 		if (!empresa) return next(new Error('Fallo al cargar la empresa ' + id));
@@ -119,7 +130,7 @@ exports.empresaByID = function(req, res, next, id) {
 	});
 };
 
-// Crear un nuevo controller middleware que es usado para autorizar una operación article 
+// Crear un nuevo controller middleware que es usado para autorizar una operación article
 exports.hasAuthorization = function(req, res, next) {
 	// si el usuario actual no es el creador del artículo, enviar el mensaje de error apropiado
 	if (req.empresa.creador.id !== req.user.id) {
