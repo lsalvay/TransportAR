@@ -52,14 +52,16 @@ var EmpresaSchema = new Schema({
     ref: 'User'
   },
   zona: {
-    type: {type: String},
-    coordinates: {
-      type:[],
-      default: []
-    }
+    //type: Object,
+    //index: '2dsphere', 
+    type: {type: String,enum: "Polygon", default: "Polygon"},
+    coordinates: []//{
+     // type:[],
+    //  default: []
+    //}
   },
 });
 
-EmpresaSchema.index({ zona: '2dsphere' });
+EmpresaSchema.index({ 'zona' : '2dsphere' });
 
 mongoose.model('Empresa', EmpresaSchema);

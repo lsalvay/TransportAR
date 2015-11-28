@@ -22,14 +22,14 @@ exports.create = function(req, res) {
 	var empresa = new Empresa(req.body);
 
 	// Configurar la propiedad 'creador' del artículo
+
 	empresa.creador = req.user;
 	
-	debugger;
-
 	// Intentar salvar el artículo
 	empresa.save(function(err) {
 		if (err) {
 			// Si ocurre algún error enviar el mensaje de error
+
 			return res.status(400).send({
 				message: getErrorMessage(err)
 			});
