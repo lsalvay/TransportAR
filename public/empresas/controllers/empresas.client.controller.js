@@ -69,7 +69,7 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
                 sucursales: $scope.sucursales,
                 zona:{
                     "type": "Polygon",
-                    "coordinates":$scope.tempCoordenadas
+                    "coordinates":[$scope.tempCoordenadas]
 
                 } 
                 
@@ -210,16 +210,12 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
                 var coordenadas = [];
                 for (var i =0; i < vertices.getLength(); i++) {
                     var xy = vertices.getAt(i);
-                    coordenadas.push(
-                        [  
-                        xy.lat(),
-                        xy.lng()
-                        ]
-                        );
+                    coordenadas.push([xy.lng(),xy.lat()]);
                 }
 
             // Asigna las coordenadas del poligono 
-            scope.tempCoordenadas=    coordenadas;
+            coordenadas.push(coordenadas[0]);
+            scope.tempCoordenadas=  coordenadas;  
 
 
             })
