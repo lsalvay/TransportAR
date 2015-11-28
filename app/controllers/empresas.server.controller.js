@@ -23,8 +23,6 @@ exports.create = function(req, res) {
 
 	// Configurar la propiedad 'creador' del artículo
 	empresa.creador = req.user;
-	
-	debugger;
 
 	// Intentar salvar el artículo
 	empresa.save(function(err) {
