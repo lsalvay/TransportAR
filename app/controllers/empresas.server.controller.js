@@ -55,6 +55,32 @@ exports.list = function(req, res) {
 		}
 	});
 };
+// Crear un nuevo método controller que recupera una lista de artículos
+exports.listMap = function(req, res) {
+	// Usar el método model 'find' para obtener una lista de artículos
+	Empresa.find({
+    zona: {
+        $geoIntersects: {
+            $geometry: {
+                type: "LineString",
+                coordinates:  [[-64,-31],[-64,-31.3]]
+            }
+        }
+    }
+	}).sort('-creado').populate('creador', 'firstName lastName fullName').exec(function(err, empresas) {
+			if (err) {
+				// Si un error ocurre enviar un mensaje de error
+				return res.status(400).send({
+					message: getErrorMessage(err)
+				});
+			} else {
+				// Enviar una representación JSON del artículo 
+				res.json(empresas);
+			}
+		});
+};
+
+	
 
 // Crear un nuevo método controller que devuelve un artículo existente
 exports.read = function(req, res) {

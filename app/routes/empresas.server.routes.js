@@ -11,6 +11,9 @@ module.exports = function(app) {
 	app.route('/api/empresas')
 	   .get(empresas.list)
 	   .post(users.requiresLogin, empresas.create);
+	app.route('/api/empresas/maps')
+	   .get(empresas.listMap)
+	   .post(users.requiresLogin, empresas.create);
 	
 	// Configurar las rutas 'empresas' parametrizadas
 	app.route('/api/empresas/:empresaId')
