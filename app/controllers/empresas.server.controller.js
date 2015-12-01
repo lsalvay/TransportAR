@@ -67,6 +67,7 @@ exports.listMap = function(req, res) {
             }
         }
     }
+    //[[-64,-31],[-64,-31.3]]
 	}).sort('-creado').populate('creador', 'firstName lastName fullName').exec(function(err, empresas) {
 			if (err) {
 				// Si un error ocurre enviar un mensaje de error
@@ -145,7 +146,6 @@ exports.empresaByID = function(req, res, next, id) {
 		next();
 	});
 };
-
 // Crear un nuevo controller middleware que es usado para autorizar una operación article 
 exports.hasAuthorization = function(req, res, next) {
 	// si el usuario actual no es el creador del artículo, enviar el mensaje de error apropiado

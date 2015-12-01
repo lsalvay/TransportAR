@@ -8,12 +8,13 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
         // Exponer el service Authentication
         
         $scope.authentication = Authentication;
-        $http.get('http://localhost:3000/api/localidades')
-       .then(function(res){
-          $scope.localidades = res.data;
+        $scope.line=[[-64,-31],[-64,-31.3]];
 
-                       
-        });
+        $http.get('http://localhost:3000/api/localidades')
+            .then(function(res){
+            $scope.localidades = res.data;
+
+            });
 
 
 
@@ -92,6 +93,16 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
             $scope.empresas = Empresas.query();
         };
 
+        $scope.findIntersect = function() {
+            // Usar el método 'query' de article para enviar una petición GET apropiada
+            $http.get('http://localhost:3000/api/intersect/line')
+            .then(function(res){
+            $scope.intersect = res.data;
+
+            });
+            
+        
+        };
         // Crear un nuevo método controller para recuperar un unico artículo
         $scope.findOne = function() {
             // Usar el método 'get' de article para enviar una petición GET apropiada

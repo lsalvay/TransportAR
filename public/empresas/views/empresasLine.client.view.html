@@ -1,0 +1,10 @@
+<!-- La view artículo -->
+<section data-ng-controller="EmpresasController" data-ng-init="findIntersect()">
+    
+    <div class="row">
+        <div ng-repeat="empresa in intersect">
+            <h1>Lista de empresas</h1>
+            <p>{{empresa.nombre}}</p>
+        </div>   
+    </div>
+</section>

@@ -11,9 +11,10 @@ module.exports = function(app) {
 	app.route('/api/empresas')
 	   .get(empresas.list)
 	   .post(users.requiresLogin, empresas.create);
-	app.route('/api/empresas/maps')
-	   .get(empresas.listMap)
-	   .post(users.requiresLogin, empresas.create);
+
+	// Configurar la rutas base a 'intersect'    
+	app.route('/api/intersect/:line')
+	   .get(empresas.listMap);
 	
 	// Configurar las rutas 'empresas' parametrizadas
 	app.route('/api/empresas/:empresaId')
@@ -23,4 +24,5 @@ module.exports = function(app) {
 
 	// Configurar el parámetro middleware 'empresaId'   
 	app.param('empresaId', empresas.empresaByID);
+	
 };
