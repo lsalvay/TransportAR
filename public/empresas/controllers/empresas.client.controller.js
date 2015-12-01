@@ -94,8 +94,11 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
         };
 
         $scope.findIntersect = function() {
-            // Usar el método 'query' de article para enviar una petición GET apropiada
-            $http.get('http://localhost:3000/api/intersect/line')
+            var puntoOrigen =  $routeParams.origen;
+            var puntoDestino =  $routeParams.destino;
+          
+            // consume el api pasando los parametros de coordenadas origen y destino 
+            $http.get('http://localhost:3000/api/intersect/?origen=['+puntoOrigen +"]&destino=["+puntoDestino+"]")
             .then(function(res){
             $scope.intersect = res.data;
 
@@ -103,6 +106,20 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
             
         
         };
+
+
+        $scope.buscarEmpresasCoordenadas = function(){
+            // Prepara la url  con los datos de las coordenadas 
+            var puntoOrigen = $scope.puntoOrigen;
+            var puntoDestino = $scope.puntoDestino;
+            //redirecciona a la ruta intersect con las coordenadas
+            $location.path('/intersect/'+puntoOrigen +"/"+puntoDestino);
+
+
+        }
+
+
+
         // Crear un nuevo método controller para recuperar un unico artículo
         $scope.findOne = function() {
             // Usar el método 'get' de article para enviar una petición GET apropiada
@@ -296,6 +313,13 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
         }
         expandViewportToFitPlace(map, place);
 
+        // Datos de coordenadas de la ubicacion origen
+        var latitud = origin_autocomplete.getPlace().geometry.location.lat();
+        var longitud = origin_autocomplete.getPlace().geometry.location.lng();
+
+        // pasar parametros al scope 
+        scope.puntoOrigen = [longitud,latitud];
+
         // If the place has a geometry, store its place ID and route if we have
         // the other place ID
         origin_place_id = place.place_id;
@@ -311,6 +335,14 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
         }
         expandViewportToFitPlace(map, place);
 
+        // Datos de coordenadas de la ubicacion destino
+        var latitud = destination_autocomplete.getPlace().geometry.location.lat();
+        var longitud = destination_autocomplete.getPlace().geometry.location.lng();
+
+        // pasar parametros al scope 
+        scope.puntoDestino = [longitud,latitud];
+
+
         // If the place has a geometry, store its place ID and route if we have
         // the other place ID
         destination_place_id = place.place_id;
@@ -320,6 +352,7 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
 
       function route(origin_place_id, destination_place_id, travel_mode,
                      directionsService, directionsDisplay) {
+       // debugger;
         if (!origin_place_id || !destination_place_id) {
           return;
         }

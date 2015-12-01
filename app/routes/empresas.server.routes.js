@@ -13,7 +13,7 @@ module.exports = function(app) {
 	   .post(users.requiresLogin, empresas.create);
 
 	// Configurar la rutas base a 'intersect'    
-	app.route('/api/intersect/:line')
+	app.route('/api/intersect/')
 	   .get(empresas.listMap);
 	
 	// Configurar las rutas 'empresas' parametrizadas

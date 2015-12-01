@@ -17,7 +17,7 @@ angular.module('empresas').config(['$routeProvider',
 		when('/empresas/:empresaId', {
 			templateUrl: 'empresas/views/view-empresa.client.view.html'
 		}).
-		when('/intersect/:line', {
+		when('/intersect/:origen/:destino', {
 			templateUrl: 'empresas/views/empresasLine.client.view.html'
 		}).
 		when('/empresas/:empresaId/edit', {

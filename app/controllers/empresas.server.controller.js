@@ -57,13 +57,18 @@ exports.list = function(req, res) {
 };
 // Crear un nuevo método controller que recupera una lista de artículos
 exports.listMap = function(req, res) {
+
+	// Obtener los parametros desde la url Ej: ?origen=[-64,-31]&destino=[-64,-31.3]
+	var origen = req.param('origen') || [0,0];
+	var destino = req.param('destino') || [0,0];
 	// Usar el método model 'find' para obtener una lista de artículos
 	Empresa.find({
     zona: {
         $geoIntersects: {
             $geometry: {
                 type: "LineString",
-                coordinates:  [[-64,-31],[-64,-31.3]]
+                //coordinates:  [[-64,-31],[-64,-31.3]]
+                coordinates:  [JSON.parse(origen),JSON.parse(destino)]
             }
         }
     }
