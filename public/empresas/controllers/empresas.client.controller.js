@@ -6,7 +6,8 @@ var zona =[];
 angular.module('empresas').controller('EmpresasController', ['$scope', '$routeParams', '$location', 'Authentication', 'Empresas', '$http', 'Localidades',
     function($scope, $routeParams, $location, Authentication, Empresas, $http, Localidades) {
         // Exponer el service Authentication
-        
+         var listaObjetosCoordenadas = {};
+
         $scope.authentication = Authentication;
         $scope.line=[[-64,-31],[-64,-31.3]];
 
@@ -166,6 +167,63 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
             }
         };
 
+        $scope.ubicarEmpresa = function(_id,_zona){
+
+          var coordenadasEmpresaUbicacion = [];
+
+          // Armar el array con base a las coordenadas de google {lat:coordenada,lng:coordenada}
+          _zona.coordinates.filter(
+            function(dato){
+              dato.filter(
+                function(a)
+                {
+                  if(a){
+                    coordenadasEmpresaUbicacion.push({'lat':  a[1], 'lng':a[0]})                     
+                  }
+                }
+              )
+            })
+
+          coordenadasEmpresaUbicacion.splice(coordenadasEmpresaUbicacion.lenght,1);
+
+          //obtener el mapa global 
+          var mapaGlobal = $scope.mapaGlobal;
+      
+            if(!listaObjetosCoordenadas[_id]){
+
+              //Asignar colores aleatorios para las coordenadas
+              var colorA =  Math.floor((Math.random() * 254) + 1);
+              var colorB =  Math.floor((Math.random() * 254) + 1);
+              var colorC =  Math.floor((Math.random() * 254) + 1);
+              
+
+             listaObjetosCoordenadas[_id] = new google.maps.Polygon({
+                paths: coordenadasEmpresaUbicacion,
+                editable: false,
+                strokeColor: '#'+colorA.toString(16)+colorB.toString(16)+colorC.toString(16),
+                strokeOpacity: 0.8,
+                strokeWeight: 3,
+                fillColor: '#'+colorA.toString(16)+colorB.toString(16)+colorC.toString(16),
+                fillOpacity: 0.35
+            });
+            
+            //asignar al mapa las coordenadas del poligono 
+            listaObjetosCoordenadas[_id].setMap(mapaGlobal);
+
+
+            }else{
+              //borrar el poligono del mapa 
+               listaObjetosCoordenadas[_id].setMap(null);
+               //inicializar el objeto 
+               listaObjetosCoordenadas[_id] = false;
+
+            }
+
+        }
+
+
+
+
     }
 ]).filter("myFilter",["$filter",function($filter) {
   var filterFn=$filter("filter");
@@ -274,6 +332,9 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
       var directionsService = new google.maps.DirectionsService;
       var directionsDisplay = new google.maps.DirectionsRenderer;
       directionsDisplay.setMap(map);
+
+      //Encapsular de forma global el mapa 
+      scope.mapaGlobal = map;
 
       var origin_input = document.getElementById('origin-input');
       var destination_input = document.getElementById('destination-input');
