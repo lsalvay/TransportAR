@@ -48,11 +48,12 @@
         </div>
 	<!-- Fin filtros-->
 	
-	<!-- Inicio Lista Empresas-->	
-	<div class="row">
-		<div class="col-md-12">
-			<div class="list-group" data-ng-repeat="empresa in intersect | myFilter: { nombre: nameSearch, localidad: locSearch, provincia: provSearch }">
-				
+  <!-- Inicio Lista Empresas--> 
+  <div class="row">
+    <div class="col-md-12">
+      <div class="list-group" data-ng-repeat="empresa in intersect | myFilter: { nombre: nameSearch, localidad: locSearch, provincia: provSearch }">
+        
+
 		    		<div class="row list-group-item">
 		    			<div class="col-md-3">
 		    			<p Class="item-name"><strong>{{empresa.nombre}}</strong><p>
@@ -65,7 +66,7 @@
 		    			</div>
 		    			<div class="col-md-3">
 		    				<a class="btn btn-success" data-ng-href="#!/empresas/{{empresa._id}}">Ver más..</a>
-		    				
+		    				 <span ng-click="ubicarEmpresa(empresa._id,empresa.zona)">Ubicar empresa</span>
 		    			</div>
 		    		</div>
 		  
