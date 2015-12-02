@@ -1,6 +1,9 @@
 // Invocar modo JavaScript 'strict'
 'use strict';
 var zona =[];
+//var urlConexion = 'http://localhost:3000';
+//debugger;
+var urlConexion = window.configuraciones.urlServer;
 
 // Crear el controller 'articles'
 angular.module('empresas').controller('EmpresasController', ['$scope', '$routeParams', '$location', 'Authentication', 'Empresas', '$http', 'Localidades',
@@ -11,7 +14,7 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
         $scope.authentication = Authentication;
         $scope.line=[[-64,-31],[-64,-31.3]];
 
-        $http.get('http://localhost:3000/api/localidades')
+        $http.get(urlConexion+'/api/localidades')
             .then(function(res){
             $scope.localidades = res.data;
 
@@ -99,7 +102,7 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
             var puntoDestino =  $routeParams.destino;
           
             // consume el api pasando los parametros de coordenadas origen y destino 
-            $http.get('http://localhost:3000/api/intersect/?origen=['+puntoOrigen +"]&destino=["+puntoDestino+"]")
+            $http.get(urlConexion+'/api/intersect/?origen=['+puntoOrigen +"]&destino=["+puntoDestino+"]")
             .then(function(res){
             $scope.intersect = res.data;
 
@@ -115,7 +118,7 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
             var puntoDestino = $scope.puntoDestino;
             //redirecciona a la ruta intersect con las coordenadas
              // consume el api pasando los parametros de coordenadas origen y destino 
-            $http.get('http://localhost:3000/api/intersect/?origen=['+puntoOrigen +"]&destino=["+puntoDestino+"]")
+            $http.get(urlConexion+'/api/intersect/?origen=['+puntoOrigen +"]&destino=["+puntoDestino+"]")
             .then(function(res){
             $scope.intersect = res.data;
 
