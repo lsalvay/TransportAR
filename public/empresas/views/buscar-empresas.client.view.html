@@ -1,74 +1,57 @@
 <!-- La view listar artículos -->
-<section data-ng-controller="EmpresasController" data-ng-init="find()">
-	<div class="txt-center">
-		<h1>Buscador de Transportes</h1>
+<section data-ng-controller="EmpresasController">
+
+	<div class="row alert alert-success" role="alert">
+			
+				<div class="col-md-4">
+					<input id="origin-input" class="form-control"  type="text" placeholder="Origen">
+				</div>
+				<div class="col-md-4">
+					<input id="destination-input" class="form-control" type="text" placeholder="Destino">
+				</div>
+				<div class="col-md-4">
+					<a class="btn btn-danger form-control" ng-click="buscarEmpresasCoordenadas()">Buscar Empresas</a>
+				</div>
 	</div>
-	<!-- Inicio Buscadores-->
-        <div class="well well-sm">
-        	<div class="row">
-        		<div class="col-md-4">
-        			<div class="input-group">
-		      			<input type="text" class="form-control" placeholder="Buscar por nombre..." data-ng-model="nameSearch">
-		      			<span class="input-group-btn">
-		        			<button class="btn btn-default" type="button">Buscar</button>
-		     			</span>
-		    		</div><!-- /input-group -->
-        		</div>
-        		<div class="col-md-4">
-        			<div class="input-group">
-		      			<input type="text" class="form-control" placeholder="Buscar por localidad..." data-ng-model="locSearch">
-		      			<span class="input-group-btn">
-		        			<button class="btn btn-default" type="button">Buscar</button>
-		      			</span>
-		    		</div><!-- /input-group -->
-        		</div>
-        		<div class="col-md-4">
-        			<div class="input-group">
-		      			<input type="text" class="form-control" placeholder="Buscar por provincia..." data-ng-model="provSearch">
-		      			<span class="input-group-btn">
-		        			<button class="btn btn-default" type="button">Buscar</button>
-		      			</span>
-		    		</div><!-- /input-group -->
-        		</div>
-        	</div>
-        </div>
-	<!-- Fin Buscadores-->
 	<!-- Inicio Mapa-->
 	<div class="row">
 		<div class="col-md-12">
-		 <input id="origin-input" class="controls" type="text"
-        placeholder="Enter an origin location">
-
-    <input id="destination-input" class="controls" type="text"
-        placeholder="Enter a destination location">
-
-    <div id="mode-selector" class="controls">
-      <input type="radio" name="type" id="changemode-walking" checked="checked">
-      <label for="changemode-walking">Walking</label>
-
-      <input type="radio" name="type" id="changemode-transit">
-      <label for="changemode-transit">Transit</label>
-
-      <input type="radio" name="type" id="changemode-driving">
-      <label for="changemode-driving">Driving</label>
-    </div>
-    <div>
-    <a class="btn btn-danger" ng-click="buscarEmpresasCoordenadas()">Buscar intersection</a>
-    </div>
-
 			<my-directive2 id="map">
 			</my-directive2>
 		</div>
 	</div>
-	
-
-
 	<!-- Fin Mapa-->
+	<!-- Inicio filtros-->
+        <div class="well well-sm">
+
+        	<div class="row">
+        		<div class="col-md-3">
+        			<h4>Filtrar por:</h4>
+        		</div>
+        		<div class="col-md-3">
+        			<div class="input-group">
+		      			<input type="text" class="form-control" placeholder="Buscar por nombre..." data-ng-model="nameSearch">
+		      			
+		    		</div><!-- /input-group -->
+        		</div>
+        		<div class="col-md-3">
+        			<div class="input-group">
+		      			<input type="text" class="form-control" placeholder="Buscar por localidad..." data-ng-model="locSearch">
+		    		</div><!-- /input-group -->
+        		</div>
+        		<div class="col-md-3">
+        			<div class="input-group">
+		      			<input type="text" class="form-control" placeholder="Buscar por provincia..." data-ng-model="provSearch">
+		    		</div><!-- /input-group -->
+        		</div>
+        	</div>
+        </div>
+	<!-- Fin filtros-->
 	
 	<!-- Inicio Lista Empresas-->	
 	<div class="row">
 		<div class="col-md-12">
-			<div class="list-group" data-ng-repeat="empresa in empresas | myFilter: { nombre: nameSearch, localidad: locSearch, provincia: provSearch }">
+			<div class="list-group" data-ng-repeat="empresa in intersect | myFilter: { nombre: nameSearch, localidad: locSearch, provincia: provSearch }">
 				
 		    		<div class="row list-group-item">
 		    			<div class="col-md-3">

@@ -113,7 +113,12 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
             var puntoOrigen = $scope.puntoOrigen;
             var puntoDestino = $scope.puntoDestino;
             //redirecciona a la ruta intersect con las coordenadas
-            $location.path('/intersect/'+puntoOrigen +"/"+puntoDestino);
+             // consume el api pasando los parametros de coordenadas origen y destino 
+            $http.get('http://localhost:3000/api/intersect/?origen=['+puntoOrigen +"]&destino=["+puntoDestino+"]")
+            .then(function(res){
+            $scope.intersect = res.data;
+
+            });
 
 
         }
@@ -263,8 +268,8 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
       var travel_mode = google.maps.TravelMode.WALKING;
       var map = new google.maps.Map(document.getElementById('map'), {
         mapTypeControl: false,
-        center: {lat: -33.8688, lng: 151.2195},
-        zoom: 13
+        center: {lat: -31.3982698, lng: -64.3344306},
+        zoom: 6
       });
       var directionsService = new google.maps.DirectionsService;
       var directionsDisplay = new google.maps.DirectionsRenderer;
@@ -274,10 +279,6 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
       var destination_input = document.getElementById('destination-input');
       var modes = document.getElementById('mode-selector');
 
-      map.controls[google.maps.ControlPosition.TOP_LEFT].push(origin_input);
-      map.controls[google.maps.ControlPosition.TOP_LEFT].push(destination_input);
-      map.controls[google.maps.ControlPosition.TOP_LEFT].push(modes);
-
       var origin_autocomplete = new google.maps.places.Autocomplete(origin_input);
       origin_autocomplete.bindTo('bounds', map);
       var destination_autocomplete =
@@ -286,15 +287,7 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
 
       // Sets a listener on a radio button to change the filter type on Places
       // Autocomplete.
-      function setupClickListener(id, mode) {
-        var radioButton = document.getElementById(id);
-        radioButton.addEventListener('click', function() {
-          travel_mode = mode;
-        });
-      }
-      setupClickListener('changemode-walking', google.maps.TravelMode.WALKING);
-      setupClickListener('changemode-transit', google.maps.TravelMode.TRANSIT);
-      setupClickListener('changemode-driving', google.maps.TravelMode.DRIVING);
+      
 
       function expandViewportToFitPlace(map, place) {
         if (place.geometry.viewport) {
