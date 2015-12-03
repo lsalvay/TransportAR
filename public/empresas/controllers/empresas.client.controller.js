@@ -6,8 +6,8 @@ var zona =[];
 var urlConexion = window.configuraciones.urlServer;
 
 // Crear el controller 'articles'
-angular.module('empresas').controller('EmpresasController', ['$scope', '$routeParams', '$location', 'Authentication', 'Empresas', '$http', 'Localidades',
-    function($scope, $routeParams, $location, Authentication, Empresas, $http, Localidades) {
+angular.module('empresas').controller('EmpresasController', ['$scope', '$routeParams', '$location', 'Authentication', 'Empresas', '$http', 'Localidades','localStorageCliente',
+    function($scope, $routeParams, $location, Authentication, Empresas, $http, Localidades,localStorageCliente) {
         // Exponer el service Authentication
          var listaObjetosCoordenadas = {};
 
@@ -40,6 +40,12 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
             $scope.selection.push(provinciaNombre);
         }
         }; 
+
+            if(localStorageCliente.getDatos('intersect') !== undefined ){
+               $scope.puntoOrigen = localStorageCliente.getDatos('puntoOrigen');
+               $scope.puntoDestino = localStorageCliente.getDatos('puntoDestino');
+              $scope.intersect = localStorageCliente.getDatos('intersect');
+            }
 
 
 
@@ -133,8 +139,32 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
         
         };
 
+        $scope.cachearDatos = function(){
+
+          localStorageCliente.setDatos('puntoOrigen',$scope.puntoOrigen);
+          localStorageCliente.setDatos('puntoDestino',$scope.puntoDestino);
+          localStorageCliente.setDatos('intersect',$scope.intersect);
+
+        }
+
+        $scope.limpiarCache = function(){
+          localStorageCliente.removeDatos('puntoOrigen');
+          localStorageCliente.removeDatos('puntoDestino');
+          localStorageCliente.removeDatos('intersect');
+           $scope.intersect = [];
+
+        }
+
+        $scope.linkDetalleEmpresa = function(_idEmpresa){
+          
+            $scope.cachearDatos();
+            $location.path('empresas/'+_idEmpresa);
+        }
 
         $scope.buscarEmpresasCoordenadas = function(){
+            //$scope.cachearDatos();
+           // debugger;
+
             // Prepara la url  con los datos de las coordenadas 
             var puntoOrigen = $scope.puntoOrigen;
             var puntoDestino = $scope.puntoDestino;
@@ -250,6 +280,7 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
 
 
     }
+
 ]).filter("myFilter",["$filter",function($filter) {
   var filterFn=$filter("filter");
    
