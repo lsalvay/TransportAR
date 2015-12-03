@@ -48,6 +48,7 @@
         </div>
 	<!-- Fin filtros-->
 	
+  <div> <button class="btn btn-danger" ng-click="limpiarCache()">Limpiar busqueda </button></div>
   <!-- Inicio Lista Empresas--> 
   <div class="row">
     <div class="col-md-12">
@@ -65,7 +66,9 @@
 		    				<p><strong>Teléfono:</strong>{{empresa.telefono}}</p>
 		    			</div>
 		    			<div class="col-md-3">
-		    				<a class="btn btn-success" data-ng-href="#!/empresas/{{empresa._id}}">Ver más..</a>
+		    				<!--<a class="btn btn-success" data-ng-href="#!/empresas/{{empresa._id}}">Ver más..</a>-->
+
+                <a class="btn btn-success" ng-click="linkDetalleEmpresa(empresa._id)">Ver más..</a>
 		    				 <span ng-click="ubicarEmpresa(empresa._id,empresa.zona)">Ubicar empresa</span>
 		    			</div>
 		    		</div>
