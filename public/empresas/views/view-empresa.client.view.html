@@ -6,7 +6,12 @@
             <h1>{{empresa.nombre}}</h1>
             <p><strong>Teléfono: </strong>{{empresa.telefono}}</p>
             <strong> Web: </strong><a href="http://{{empresa.web}}" target="blank">{{empresa.web}}</a>
-            <p ng-repeat="zona in empresa.zona track by $index">{{zona}}</p>
+            <br>
+            <br>
+            <p><strong>Tipos de Servicios</strong></p>
+            <li data-ng-repeat="servicio in empresa.servicio">
+                {{ servicio }}
+            </li>
 
         </div> 
     </div>

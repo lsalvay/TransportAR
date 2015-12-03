@@ -46,6 +46,11 @@ var EmpresaSchema = new Schema({
     default: '',
     trim: true
   },
+  servicio: {
+    type: [String],
+    default: '',
+    trim: true
+  },
   sucursales : [SucursalSchema],
   creador: {
     type: Schema.ObjectId,

@@ -19,6 +19,27 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
             $scope.localidades = res.data;
 
             });
+        //seleccion de servicios
+        $scope.servicios= [
+            "carga",
+            "paquete",
+            "peligrosa"
+        ];
+        $scope.selection=[];
+        // toggle selection for a given employee by name
+        $scope.toggleSelection = function toggleSelection(provinciaNombre) {
+        var idx = $scope.selection.indexOf(provinciaNombre);
+
+        // is currently selected
+        if (idx > -1) {
+            $scope.selection.splice(idx, 1);
+        }
+
+        // is newly selected
+        else {
+            $scope.selection.push(provinciaNombre);
+        }
+        }; 
 
 
 
@@ -71,6 +92,7 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
                 nombre: this.nombre,
                 telefono: this.telefono,
                 web: this.web,
+                servicio: this.selection,
                 sucursales: $scope.sucursales,
                 zona:{
                     "type": "Polygon",
