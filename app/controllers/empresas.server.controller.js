@@ -66,14 +66,26 @@ exports.listMap = function(req, res) {
     zona: {
         $geoIntersects: {
             $geometry: {
-                type: "LineString",
+                type: "Point",
                 //coordinates:  [[-64,-31],[-64,-31.3]]
-                coordinates:  [JSON.parse(origen),JSON.parse(destino)]
+                coordinates:  JSON.parse(origen)
             }
         }
     }
     //[[-64,-31],[-64,-31.3]]
-	}).sort('-creado').populate('creador', 'firstName lastName fullName').exec(function(err, empresas) {
+	}).and
+	Empresa.find({
+	    zona: {
+	        $geoIntersects: {
+	            $geometry: {
+	                type: "Point",
+	                //coordinates:  [[-64,-31],[-64,-31.3]]
+	                coordinates:  JSON.parse(destino)
+	            }
+	        }
+	    }
+	    //[[-64,-31],[-64,-31.3]]
+		}).sort('-creado').populate('creador', 'firstName lastName fullName').exec(function(err, empresas) {
 			if (err) {
 				// Si un error ocurre enviar un mensaje de error
 				return res.status(400).send({
