@@ -9,7 +9,7 @@ var urlConexion = window.configuraciones.urlServer;
 angular.module('empresas').controller('EmpresasController', ['$scope', '$routeParams', '$location', 'Authentication', 'Empresas', '$http', 'Localidades','localStorageCliente',
     function($scope, $routeParams, $location, Authentication, Empresas, $http, Localidades,localStorageCliente) {
         // Exponer el service Authentication
-         var listaObjetosCoordenadas = {};
+        $scope.listaObjetosCoordenadas = {};
 
         $scope.authentication = Authentication;
         $scope.line=[[-64,-31],[-64,-31.3]];
@@ -148,11 +148,14 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
         }
 
         $scope.limpiarCache = function(){
-          localStorageCliente.removeDatos('puntoOrigen');
-          localStorageCliente.removeDatos('puntoDestino');
-          localStorageCliente.removeDatos('intersect');
-           $scope.intersect = [];
+            localStorageCliente.removeDatos('puntoOrigen');
+            localStorageCliente.removeDatos('puntoDestino');
+            localStorageCliente.removeDatos('intersect');
+            $scope.intersect = [];
 
+            for (var x in $scope.listaObjetosCoordenadas) {
+                $scope.listaObjetosCoordenadas[x].setMap(null);
+            }
         }
 
         $scope.linkDetalleEmpresa = function(_idEmpresa){
@@ -162,8 +165,16 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
         }
 
         $scope.buscarEmpresasCoordenadas = function(){
-            //$scope.cachearDatos();
-           // debugger;
+            // Reiniciar datos  localstorate y limpiar mapa
+            localStorageCliente.removeDatos('puntoOrigen');
+            localStorageCliente.removeDatos('puntoDestino');
+            localStorageCliente.removeDatos('intersect');
+            $scope.intersect = [];
+
+            for (var x in $scope.listaObjetosCoordenadas) {
+                $scope.listaObjetosCoordenadas[x].setMap(null);
+            }
+
 
             // Prepara la url  con los datos de las coordenadas 
             var puntoOrigen = $scope.puntoOrigen;
@@ -244,7 +255,7 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
           //obtener el mapa global 
           var mapaGlobal = $scope.mapaGlobal;
       
-            if(!listaObjetosCoordenadas[_id]){
+            if(!$scope.listaObjetosCoordenadas[_id]){
 
               //Asignar colores aleatorios para las coordenadas
               var colorA =  Math.floor((Math.random() * 254) + 1);
@@ -252,7 +263,7 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
               var colorC =  Math.floor((Math.random() * 254) + 1);
               
 
-             listaObjetosCoordenadas[_id] = new google.maps.Polygon({
+             $scope.listaObjetosCoordenadas[_id] = new google.maps.Polygon({
                 paths: coordenadasEmpresaUbicacion,
                 editable: false,
                 strokeColor: '#'+colorA.toString(16)+colorB.toString(16)+colorC.toString(16),
@@ -263,14 +274,14 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
             });
             
             //asignar al mapa las coordenadas del poligono 
-            listaObjetosCoordenadas[_id].setMap(mapaGlobal);
+            $scope.listaObjetosCoordenadas[_id].setMap(mapaGlobal);
 
 
             }else{
               //borrar el poligono del mapa 
-               listaObjetosCoordenadas[_id].setMap(null);
+               $scope.listaObjetosCoordenadas[_id].setMap(null);
                //inicializar el objeto 
-               listaObjetosCoordenadas[_id] = false;
+               $scope.listaObjetosCoordenadas[_id] = false;
 
             }
 
