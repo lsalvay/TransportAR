@@ -1,81 +1,77 @@
 <!-- La view listar artículos -->
 <section data-ng-controller="EmpresasController">
 
-	<div class="row alert alert-success" role="alert">
-			
-				<div class="col-md-4">
-					<input id="origin-input" class="form-control"  type="text" placeholder="Origen">
-				</div>
-				<div class="col-md-4">
-					<input id="destination-input" class="form-control" type="text" placeholder="Destino">
-				</div>
-				<div class="col-md-4">
-					<a class="btn btn-danger form-control" ng-click="buscarEmpresasCoordenadas()">Buscar Empresas</a>
-				</div>
-	</div>
-	<!-- Inicio Mapa-->
 	<div class="row">
-		<div class="col-md-12">
+		<!-- Inicio Formulario-->
+		<div class="col-md-3 alert alert-success" role="alert">
+			<input id="origin-input" class="form-control"  type="text" placeholder="Origen">
+			<br>
+			<input id="destination-input" class="form-control" type="text" placeholder="Destino">
+			<br>
+			<a class="btn btn-danger form-control" ng-click="buscarEmpresasCoordenadas()">Buscar Empresas</a>
+			<br>
+			<br>
+				<div class="alert alert-info" role="alert" ng-if="distancia">Distancia: {{distancia}} Km.</div>
+				<div class="alert alert-info" role="alert" ng-if="precio">Precio Aprox.: ${{precio}}</div>
+		</div>
+		<!-- Fin Formulario-->
+		<!-- Inicio Mapa-->
+		<div class="col-md-9">
 			<my-directive2 id="map">
 			</my-directive2>
 		</div>
+		<!-- Fin Mapa-->
 	</div>
-	<!-- Fin Mapa-->
 	<!-- Inicio filtros-->
-        <div class="well well-sm">
-
-        	<div class="row">
-        		<div class="col-md-3">
-        			<h4>Filtrar por:</h4>
-        		</div>
-        		<div class="col-md-3">
-        			<div class="input-group">
-		      			<input type="text" class="form-control" placeholder="Buscar por nombre..." data-ng-model="nameSearch">
-		      			
-		    		</div><!-- /input-group -->
-        		</div>
-        		<div class="col-md-3">
-        			<div class="input-group">
-		      			<input type="text" class="form-control" placeholder="Buscar por localidad..." data-ng-model="locSearch">
-		    		</div><!-- /input-group -->
-        		</div>
-        		<div class="col-md-3">
-        			<div class="input-group">
-		      			<input type="text" class="form-control" placeholder="Buscar por provincia..." data-ng-model="provSearch">
-		    		</div><!-- /input-group -->
-        		</div>
+    <div class="well well-sm">
+		<div class="row">
+        	<div class="col-md-3">
+        		<h4>Filtrar por:</h4>
+        	</div>
+        	<div class="col-md-3">
+        		<div class="input-group">
+		      		<input type="text" class="form-control" placeholder="Buscar por nombre..." data-ng-model="nameSearch">
+		      	</div><!-- /input-group -->
+        	</div>
+        	<div class="col-md-3">
+        		<div class="input-group">
+		      		<input type="text" class="form-control" placeholder="Buscar por localidad..." data-ng-model="locSearch">
+		    	</div><!-- /input-group -->
+        	</div>
+        	<div class="col-md-3">
+        		<div class="input-group">
+		      		<input type="text" class="form-control" placeholder="Buscar por provincia..." data-ng-model="provSearch">
+		    	</div><!-- /input-group -->
         	</div>
         </div>
+    </div>
 	<!-- Fin filtros-->
-	
-  <div> <button class="btn btn-danger" ng-click="limpiarCache()">Limpiar busqueda </button></div>
+  	<div>
+  		<button class="btn btn-danger" ng-click="limpiarCache()">Limpiar busqueda </button>
+  	</div>
   <!-- Inicio Lista Empresas--> 
-  <div class="row">
-    <div class="col-md-12">
-      <div class="list-group" data-ng-repeat="empresa in intersect | myFilter: { nombre: nameSearch, localidad: locSearch, provincia: provSearch }">
-        
-
-		    		<div class="row list-group-item">
-		    			<div class="col-md-3">
+  	<div class="row">
+  		<div class="col-md-12">
+      		<div class="list-group" data-ng-repeat="empresa in intersect | myFilter: { nombre: nameSearch, localidad: locSearch, provincia: provSearch }">
+		    	<div class="row list-group-item">
+		    		<div class="col-md-3">
 		    			<p Class="item-name"><strong>{{empresa.nombre}}</strong><p>
-		    			</div>
-						<div class="col-md-3">
-		    				<strong> Web: </strong><a href="http://{{empresa.web}}" target="blank">{{empresa.web}}</a>
-		    			</div>
-		    			<div class="col-md-3">
-		    				<p><strong>Teléfono:</strong>{{empresa.telefono}}</p>
-		    			</div>
-		    			<div class="col-md-3">
-		    				<!--<a class="btn btn-success" data-ng-href="#!/empresas/{{empresa._id}}">Ver más..</a>-->
-
-                <a class="btn btn-success" ng-click="linkDetalleEmpresa(empresa._id)">Ver más..</a>
-		    				 <span ng-click="ubicarEmpresa(empresa._id,empresa.zona)">Ubicar empresa</span>
-		    			</div>
 		    		</div>
-		  
-			</div>
+					<div class="col-md-3">
+		    			<strong> Web: </strong>
+		    			<a href="http://{{empresa.web}}" target="blank">{{empresa.web}}</a>
+		    		</div>
+		    		<div class="col-md-3">
+		    			<p><strong>Teléfono:</strong>{{empresa.telefono}}</p>
+		    		</div>
+		    		<div class="col-md-3">
+		    			<!--<a class="btn btn-success" data-ng-href="#!/empresas/{{empresa._id}}">Ver más..</a>-->
+						<a class="btn btn-success" ng-click="linkDetalleEmpresa(empresa._id)">Ver más..</a>
+		    			<span ng-click="ubicarEmpresa(empresa._id,empresa.zona)">Ubicar empresa</span>
+		    		</div>
+		    	</div>
+		  	</div>
 		</div>
 	</div>
 	<!-- Fin Lista Empresas-->
-
 </section>

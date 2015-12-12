@@ -61,8 +61,10 @@ angular.module('directives',[]).directive("myDirective", function(){
         template: '<div></div>',
         replace: true,
         link: function(scope, element, attrs){
-            
-        var origin_place_id = null;
+      //declaracion de variables globales      
+      var distPuntoA = null;
+      var distPuntoB = null;
+      var origin_place_id = null;
       var destination_place_id = null;
       var travel_mode = google.maps.TravelMode.WALKING;
       var map = new google.maps.Map(document.getElementById('map'), {
@@ -115,6 +117,9 @@ angular.module('directives',[]).directive("myDirective", function(){
         // pasar parametros al scope 
         scope.puntoOrigen = [longitud,latitud];
 
+        //guardar coordenadas del punto B para calcular la distancia
+        distPuntoA = new google.maps.LatLng(latitud, longitud);
+
         // If the place has a geometry, store its place ID and route if we have
         // the other place ID
         origin_place_id = place.place_id;
@@ -137,6 +142,11 @@ angular.module('directives',[]).directive("myDirective", function(){
         // pasar parametros al scope 
         scope.puntoDestino = [longitud,latitud];
 
+        //guardar coordenadas del punto B para calcular la distancia
+        distPuntoB = new google.maps.LatLng(latitud,longitud);
+        //envía al scope la distancia en KM
+        scope.distancia= (google.maps.geometry.spherical.computeDistanceBetween (distPuntoA, distPuntoB)/1000).toFixed(2);
+        scope.precio = scope.distancia*8;
 
         // If the place has a geometry, store its place ID and route if we have
         // the other place ID
