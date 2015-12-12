@@ -133,6 +133,7 @@ angular.module('directives',[]).directive("myDirective", function(){
           window.alert("Autocomplete's returned place contains no geometry");
           return;
         }
+
         expandViewportToFitPlace(map, place);
 
         // Datos de coordenadas de la ubicacion destino
@@ -144,9 +145,6 @@ angular.module('directives',[]).directive("myDirective", function(){
 
         //guardar coordenadas del punto B para calcular la distancia
         distPuntoB = new google.maps.LatLng(latitud,longitud);
-        //envía al scope la distancia en KM
-        scope.distancia= (google.maps.geometry.spherical.computeDistanceBetween (distPuntoA, distPuntoB)/1000).toFixed(2);
-        scope.precio = scope.distancia*8;
 
         // If the place has a geometry, store its place ID and route if we have
         // the other place ID
@@ -161,6 +159,10 @@ angular.module('directives',[]).directive("myDirective", function(){
         if (!origin_place_id || !destination_place_id) {
           return;
         }
+        //envía al scope la distancia en KM
+        scope.distancia= (google.maps.geometry.spherical.computeDistanceBetween (distPuntoA, distPuntoB)/1000).toFixed(2);
+        scope.precio = scope.distancia*8;
+        
         directionsService.route({
           origin: {'placeId': origin_place_id},
           destination: {'placeId': destination_place_id},
