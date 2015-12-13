@@ -1,16 +1,15 @@
 // Invocar modo JavaScript 'strict'
 'use strict';
 var zona =[];
-//var urlConexion = 'http://localhost:3000';
-//debugger;
+
 var urlConexion = window.configuraciones.urlServer;
 
 // Crear el controller 'articles'
 angular.module('empresas').controller('EmpresasController', ['$scope', '$routeParams', '$location', 'Authentication', 'Empresas', '$http', 'Localidades','localStorageCliente',
     function($scope, $routeParams, $location, Authentication, Empresas, $http, Localidades,localStorageCliente) {
-        // Exponer el service Authentication
+        
         $scope.listaObjetosCoordenadas = {};
-
+        // Exponer el service Authentication
         $scope.authentication = Authentication;
 
         $http.get(urlConexion+'/api/localidades')
@@ -45,8 +44,6 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
                $scope.puntoDestino = localStorageCliente.getDatos('puntoDestino');
               $scope.intersect = localStorageCliente.getDatos('intersect');
             }
-
-
 
  // Crear un nuevo método controller para crear nuevos articles
         $scope.create = function() {
@@ -102,11 +99,8 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
                 zona:{
                     "type": "Polygon",
                     "coordinates":[$scope.tempCoordenadas]
-
-                } 
-                
+                }    
             });
-
 
             // Usar el método '$save' de article para enviar una petición POST apropiada
             empresa.$save(function(response) {
@@ -134,8 +128,6 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
             $scope.intersect = res.data;
 
             });
-            
-        
         };
 
         $scope.cachearDatos = function(){
@@ -174,7 +166,6 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
                 $scope.listaObjetosCoordenadas[x].setMap(null);
             }
 
-
             // Prepara la url  con los datos de las coordenadas 
             var puntoOrigen = $scope.puntoOrigen;
             var puntoDestino = $scope.puntoDestino;
@@ -188,9 +179,6 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
 
 
         }
-
-
-
         // Crear un nuevo método controller para recuperar un unico artículo
         $scope.findOne = function() {
             // Usar el método 'get' de article para enviar una petición GET apropiada
@@ -235,7 +223,6 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
         $scope.ubicarEmpresa = function(_id,_zona){
 
           var coordenadasEmpresaUbicacion = [];
-
           // Armar el array con base a las coordenadas de google {lat:coordenada,lng:coordenada}
           _zona.coordinates.filter(
             function(dato){
@@ -248,9 +235,7 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
                 }
               )
             })
-
           coordenadasEmpresaUbicacion.splice(coordenadasEmpresaUbicacion.lenght,1);
-
           //obtener el mapa global 
           var mapaGlobal = $scope.mapaGlobal;
       
@@ -261,7 +246,6 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
               var colorB =  Math.floor((Math.random() * 254) + 1);
               var colorC =  Math.floor((Math.random() * 254) + 1);
               
-
              $scope.listaObjetosCoordenadas[_id] = new google.maps.Polygon({
                 paths: coordenadasEmpresaUbicacion,
                 editable: false,
@@ -271,11 +255,8 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
                 fillColor: '#'+colorA.toString(16)+colorB.toString(16)+colorC.toString(16),
                 fillOpacity: 0.35
             });
-            
             //asignar al mapa las coordenadas del poligono 
             $scope.listaObjetosCoordenadas[_id].setMap(mapaGlobal);
-
-
             }else{
               //borrar el poligono del mapa 
                $scope.listaObjetosCoordenadas[_id].setMap(null);
@@ -286,12 +267,7 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
                $scope.listaObjetosCoordenadas[_id] = false;
 
             }
-
         }
-
-
-
-
     }
 
 ]).filter("myFilter",["$filter",function($filter) {
