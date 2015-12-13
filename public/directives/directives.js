@@ -27,6 +27,7 @@ angular.module('directives',[]).directive("myDirective", function(){
             var defaultZone = new google.maps.Polygon({
                 paths: triangleCoords,
                 editable: true,
+                draggable: true,
                 strokeColor: '#FF0000',
                 strokeOpacity: 0.8,
                 strokeWeight: 3,
@@ -162,7 +163,7 @@ angular.module('directives',[]).directive("myDirective", function(){
         //envía al scope la distancia en KM
         scope.distancia= (google.maps.geometry.spherical.computeDistanceBetween (distPuntoA, distPuntoB)/1000).toFixed(2);
         scope.precio = scope.distancia*8;
-        
+
         directionsService.route({
           origin: {'placeId': origin_place_id},
           destination: {'placeId': destination_place_id},

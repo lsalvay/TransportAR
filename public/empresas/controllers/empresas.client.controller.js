@@ -12,7 +12,6 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
         $scope.listaObjetosCoordenadas = {};
 
         $scope.authentication = Authentication;
-        $scope.line=[[-64,-31],[-64,-31.3]];
 
         $http.get(urlConexion+'/api/localidades')
             .then(function(res){
@@ -281,6 +280,9 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
               //borrar el poligono del mapa 
                $scope.listaObjetosCoordenadas[_id].setMap(null);
                //inicializar el objeto 
+                //
+                //
+            // Esta linea es la que genera un problema a la hora de pintar la ubicacion y despintarla.
                $scope.listaObjetosCoordenadas[_id] = false;
 
             }
