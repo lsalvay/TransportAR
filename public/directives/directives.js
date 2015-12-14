@@ -90,10 +90,7 @@ angular.module('directives',[]).directive("myDirective", function(){
           new google.maps.places.Autocomplete(destination_input);
       destination_autocomplete.bindTo('bounds', map);
 
-      // Sets a listener on a radio button to change the filter type on Places
       // Autocomplete.
-      
-
       function expandViewportToFitPlace(map, place) {
         if (place.geometry.viewport) {
           map.fitBounds(place.geometry.viewport);
