@@ -15,14 +15,12 @@ var getErrorMessage = function(err) {
 		return 'Error de servidor desconocido';
 	}
 };
-
 // Crear un nuevo método controller para crear nuevos artículos
 exports.create = function(req, res) {
 	// Crear un nuevo objeto artículo
 	var empresa = new Empresa(req.body);
 
 	// Configurar la propiedad 'creador' del artículo
-
 	empresa.creador = req.user;
 
 	// Intentar salvar el artículo
@@ -39,7 +37,6 @@ exports.create = function(req, res) {
 		}
 	});
 };
-
 // Crear un nuevo método controller que recupera una lista de artículos
 exports.list = function(req, res) {
 	// Usar el método model 'find' para obtener una lista de artículos
@@ -55,36 +52,31 @@ exports.list = function(req, res) {
 		}
 	});
 };
-// Crear un nuevo método controller que recupera una lista de artículos
+// Crear un nuevo método controller que recupera una lista de empresas
 exports.listMap = function(req, res) {
-
 	// Obtener los parametros desde la url Ej: ?origen=[-64,-31]&destino=[-64,-31.3]
 	var origen = req.param('origen') || [0,0];
 	var destino = req.param('destino') || [0,0];
-	// Usar el método model 'find' para obtener una lista de artículos
+	// Usar el método model 'find' para obtener una lista de empresas
 	Empresa.find({
     zona: {
         $geoIntersects: {
             $geometry: {
                 type: "Point",
-                //coordinates:  [[-64,-31],[-64,-31.3]]
                 coordinates:  JSON.parse(origen)
             }
         }
     }
-    //[[-64,-31],[-64,-31.3]]
 	}).and
 	Empresa.find({
 	    zona: {
 	        $geoIntersects: {
 	            $geometry: {
 	                type: "Point",
-	                //coordinates:  [[-64,-31],[-64,-31.3]]
 	                coordinates:  JSON.parse(destino)
 	            }
 	        }
 	    }
-	    //[[-64,-31],[-64,-31.3]]
 		}).sort('-creado').populate('creador', 'firstName lastName fullName').exec(function(err, empresas) {
 			if (err) {
 				// Si un error ocurre enviar un mensaje de error
@@ -97,8 +89,6 @@ exports.listMap = function(req, res) {
 			}
 		});
 };
-
-	
 
 // Crear un nuevo método controller que devuelve un artículo existente
 exports.read = function(req, res) {
@@ -115,7 +105,6 @@ exports.update = function(req, res) {
 	empresa.provincia = req.body.provincia;
 	empresa.localidad = req.body.localidad;
 
-
 	// Intentar salvar el artículo actualizado
 	empresa.save(function(err) {
 		if (err) {
@@ -129,7 +118,6 @@ exports.update = function(req, res) {
 		}
 	});
 };
-
 // Crear un nuevo método controller que borre un artículo existente
 exports.delete = function(req, res) {
 	// Obtener el artículo usando el objeto 'request'
@@ -148,7 +136,6 @@ exports.delete = function(req, res) {
 		}
 	});
 };
-
 // Crear un nuevo controller middleware que recupera un único artículo existente
 exports.empresaByID = function(req, res, next, id) {
 	// Usar el método model 'findById' para encontrar un único artículo 
@@ -171,7 +158,6 @@ exports.hasAuthorization = function(req, res, next) {
 			message: 'Usuario no está autorizado'
 		});
 	}
-
 	// Llamar al siguiente middleware
 	next();
 };

@@ -1,9 +1,7 @@
 // Invocar modo JavaScript 'strict'
 'use strict';
 var zona =[];
-
 var urlConexion = window.configuraciones.urlServer;
-
 // Crear el controller 'articles'
 angular.module('empresas').controller('EmpresasController', ['$scope', '$routeParams', '$location', 'Authentication', 'Empresas', '$http', 'Localidades','localStorageCliente',
     function($scope, $routeParams, $location, Authentication, Empresas, $http, Localidades,localStorageCliente) {
@@ -171,11 +169,13 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
             var puntoDestino = $scope.puntoDestino;
             //redirecciona a la ruta intersect con las coordenadas
              // consume el api pasando los parametros de coordenadas origen y destino 
-            $http.get(urlConexion+'/api/intersect/?origen=['+puntoOrigen +"]&destino=["+puntoDestino+"]")
-            .then(function(res){
-            $scope.intersect = res.data;
+            if( puntoOrigen != null && puntoDestino != null) {
 
-            });
+                $http.get(urlConexion+'/api/intersect/?origen=['+puntoOrigen +"]&destino=["+puntoDestino+"]")
+                .then(function(res){
+                    $scope.intersect = res.data;
+                });
+            }
 
 
         }
@@ -222,50 +222,53 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
 
         $scope.ubicarEmpresa = function(_id,_zona){
 
-          var coordenadasEmpresaUbicacion = [];
-          // Armar el array con base a las coordenadas de google {lat:coordenada,lng:coordenada}
-          _zona.coordinates.filter(
-            function(dato){
-              dato.filter(
-                function(a)
-                {
-                  if(a){
-                    coordenadasEmpresaUbicacion.push({'lat':  a[1], 'lng':a[0]})                     
-                  }
-                }
-              )
+            var coordenadasEmpresaUbicacion = [];
+
+            // Armar el array con base a las coordenadas de google {lat:coordenada,lng:coordenada}
+            _zona.coordinates.filter( function(dato) {
+                    dato.filter( function(a) {
+                        if(a){
+                            coordenadasEmpresaUbicacion.push({'lat':  a[1], 'lng':a[0]})                     
+                        }
+                    })
             })
-          coordenadasEmpresaUbicacion.splice(coordenadasEmpresaUbicacion.lenght,1);
-          //obtener el mapa global 
-          var mapaGlobal = $scope.mapaGlobal;
-      
-            if(!$scope.listaObjetosCoordenadas[_id]){
 
-              //Asignar colores aleatorios para las coordenadas
-              var colorA =  Math.floor((Math.random() * 254) + 1);
-              var colorB =  Math.floor((Math.random() * 254) + 1);
-              var colorC =  Math.floor((Math.random() * 254) + 1);
-              
-             $scope.listaObjetosCoordenadas[_id] = new google.maps.Polygon({
-                paths: coordenadasEmpresaUbicacion,
-                editable: false,
-                strokeColor: '#'+colorA.toString(16)+colorB.toString(16)+colorC.toString(16),
-                strokeOpacity: 0.8,
-                strokeWeight: 3,
-                fillColor: '#'+colorA.toString(16)+colorB.toString(16)+colorC.toString(16),
-                fillOpacity: 0.35
-            });
-            //asignar al mapa las coordenadas del poligono 
-            $scope.listaObjetosCoordenadas[_id].setMap(mapaGlobal);
+            coordenadasEmpresaUbicacion.splice(coordenadasEmpresaUbicacion.lenght,1);
+
+            //obtener el mapa global 
+            var mapaGlobal = $scope.mapaGlobal;
+
+            //validar que sea un objeto nuevo de coordenada a ubicar
+            if( $scope.listaObjetosCoordenadas[_id] == undefined  ){
+
+                //Asignar colores aleatorios para las coordenadas
+                var colorA =  Math.floor((Math.random() * 254) + 1);
+                var colorB =  Math.floor((Math.random() * 254) + 1);
+                var colorC =  Math.floor((Math.random() * 254) + 1);
+
+                 $scope.listaObjetosCoordenadas[_id] = new google.maps.Polygon({
+                    paths: coordenadasEmpresaUbicacion,
+                    editable: false,
+                    strokeColor: '#'+colorA.toString(16)+colorB.toString(16)+colorC.toString(16),
+                    strokeOpacity: 0.8,
+                    strokeWeight: 3,
+                    fillColor: '#'+colorA.toString(16)+colorB.toString(16)+colorC.toString(16),
+                    fillOpacity: 0.35
+                });
+            
+                //asignar al mapa las coordenadas del poligono 
+                $scope.listaObjetosCoordenadas[_id].setMap(mapaGlobal);
+
             }else{
-              //borrar el poligono del mapa 
-               $scope.listaObjetosCoordenadas[_id].setMap(null);
-               //inicializar el objeto 
-                //
-                //
-            // Esta linea es la que genera un problema a la hora de pintar la ubicacion y despintarla.
-               $scope.listaObjetosCoordenadas[_id] = false;
 
+                // validar si tiene un mapa asigado a la coordenada
+                if($scope.listaObjetosCoordenadas[_id].getMap()) {                    
+                    //borrar el poligono del mapa 
+                    $scope.listaObjetosCoordenadas[_id].setMap(null);       
+                }else{
+                    // Asignar de nuevo el poligono al mapa
+                    $scope.listaObjetosCoordenadas[_id].setMap(mapaGlobal);
+                }
             }
         }
     }
