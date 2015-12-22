@@ -58,26 +58,31 @@ exports.listMap = function(req, res) {
 	var origen = req.param('origen') || [0,0];
 	var destino = req.param('destino') || [0,0];
 	// Usar el método model 'find' para obtener una lista de empresas
-	Empresa.find({
-    zona: {
-        $geoIntersects: {
-            $geometry: {
-                type: "Point",
-                coordinates:  JSON.parse(origen)
-            }
-        }
-    }
-	}).and
-	Empresa.find({
-	    zona: {
-	        $geoIntersects: {
-	            $geometry: {
-	                type: "Point",
-	                coordinates:  JSON.parse(destino)
-	            }
-	        }
-	    }
-		}).sort('-creado').populate('creador', 'firstName lastName fullName').exec(function(err, empresas) {
+
+	Empresa.find()
+	.and([
+		{  
+			zona: {
+        		$geoIntersects: {
+            		$geometry: {
+                		type: "Point",
+                		coordinates:  JSON.parse(origen)
+            		}
+        		}
+    		}
+		},
+		{
+	    	zona: {
+	        	$geoIntersects: {
+	            	$geometry: {
+	                	type: "Point",
+	                	coordinates:  JSON.parse(destino)
+	            	}
+	        	}
+	    	}
+		}
+	])
+	.sort('-creado').populate('creador', 'firstName lastName fullName').exec(function(err, empresas) {
 			if (err) {
 				// Si un error ocurre enviar un mensaje de error
 				return res.status(400).send({
