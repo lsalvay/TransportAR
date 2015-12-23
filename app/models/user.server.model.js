@@ -33,6 +33,10 @@ var UserSchema = new Schema({
       }, 'La contraseña debe ser más larga'
     ]
   },
+  isAdmin: {
+    type: Boolean,
+    default: true
+  },
   salt: {
     type: String
   },

@@ -33,6 +33,11 @@ module.exports = function() {
           message: 'Contraseña incorrecta'
         });
       }
+
+      //Si el usuario es admin lo direccionamos
+      if (user.isAdmin==true){
+         return done(null, user);
+      }
       
       // En otro caso, continuar al siguiente middleware con el objeto user
       return done(null, user);
