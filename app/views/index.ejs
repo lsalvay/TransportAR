@@ -35,13 +35,24 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-            
-              <li class="dropdown" data-ng-show="!authentication.user">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">LogIn<span class="caret"></span></a>
+             <li class="dropdown" data-ng-show="!authentication.user">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
                 <ul class="dropdown-menu" >
                   <li role="separator" class="divider"></li>
                   
-                  <li><a href="/signup">Crear Cuenta</a></li>
+                  <li><a href="/administrador/signup">Crear Empresa</a></li>
+                  <li><a href="/administrador/signin">Login</a></li>
+                  
+                 
+                </ul>
+              </li>
+            
+              <li class="dropdown" data-ng-show="!authentication.user">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Empresas<span class="caret"></span></a>
+                <ul class="dropdown-menu" >
+                  <li role="separator" class="divider"></li>
+                  
+                  <li><a href="/signup">Crear Empresa</a></li>
                   <li><a href="/signin">Login</a></li>
                   
                  

@@ -51,6 +51,7 @@ module.exports = function() {
   require('../app/routes/users.server.routes.js')(app);
   require('../app/routes/empresas.server.routes.js')(app);
   require('../app/routes/localidades.server.routes.js')(app);
+  require('../app/routes/admin.server.routes.js')(app);
 
   // Configurar el servidor de archivos estáticos
   app.use(express.static('./public'));
