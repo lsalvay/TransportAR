@@ -21,6 +21,9 @@ module.exports = function(app) {
        failureFlash: true
      }));
 
+  app.route('/dashboard')
+     .get(admin.renderDashBoard);
+     
   //Configurar la route 'signout'
   app.get('/administrador/signout', admin.signout);
 };

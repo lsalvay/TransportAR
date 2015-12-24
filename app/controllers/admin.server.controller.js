@@ -38,14 +38,14 @@ exports.renderSignin = function(req, res, next) {
   // Si el usuario no está conectado renderizar la página signin, en otro caso redireccionar al usuario de vuelta a la página principal de la aplicación
   if (!req.user) {
     // Usa el objeto 'response' para renderizar la página signin
-    res.render('signin', {
+    res.render('signin-admin', {
       // Configurar la variable title de la página
       title: 'Log-In de Administrador',
       // Configurar la variable del mensaje flash
       messages: req.flash('error') || req.flash('info')
     });
   } else {
-    return res.redirect('/');
+    return res.redirect('/dashBoard');
   }
 };
 
@@ -163,3 +163,8 @@ exports.requiresLogin = function(req, res, next) {
   // Llamar al siguiente middleware
   next();
 };
+
+
+exports.renderDashBoard = function(req, res){
+  res.render('dashBoard',{title:'DashBoard'})
+}
