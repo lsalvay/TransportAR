@@ -19,8 +19,8 @@ module.exports = function(app) {
 	// Configurar las rutas 'empresas' parametrizadas
 	app.route('/api/empresas/:empresaId')
 	   .get(empresas.read)
-	   .put(users.requiresLogin, empresas.hasAuthorization, empresas.update)
-	   .delete(users.requiresLogin, empresas.hasAuthorization, empresas.delete);
+	   .put(users.requiresLogin, users.validarAdmin, empresas.hasAuthorization, empresas.update)
+	   .delete(users.requiresLogin, users.validarAdmin, empresas.hasAuthorization, empresas.delete);
 
 	// Configurar el parámetro middleware 'empresaId'   
 	app.param('empresaId', empresas.empresaByID);

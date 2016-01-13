@@ -7,7 +7,7 @@ var users = require('../../app/controllers/users.server.controller'),
 
 //Definir el método del módulo routes
 module.exports = function(app) {
-	//Configurar las rutas 'signup'
+  //Configurar las rutas 'signup'
   app.route('/signup')
      .get(users.renderSignup)
      .post(users.signup);
@@ -15,11 +15,16 @@ module.exports = function(app) {
   //Configurar las routes 'signin'
   app.route('/signin')
      .get(users.renderSignin)
-     .post(passport.authenticate('local', {
-       successRedirect: '/',
-       failureRedirect: '/signin',
-       failureFlash: true
-     }));
+     .post(passport.authenticate('local'), function(req, res) {
+      if (req.user.isAdmin){
+        res.redirect('/dashboard')
+      } else {
+        res.redirect('/')
+      }
+       //successRedirect: '/',
+       //failureRedirect: '/signin',
+       //failureFlash: true
+     });
      
  // Configurar las rutas Google OAuth 
   app.get('/oauth/google', passport.authenticate('google', {
@@ -29,10 +34,15 @@ module.exports = function(app) {
     ],
     failureRedirect: '/signin'
   }));
-  app.get('/oauth2callback', passport.authenticate('google', {
-    failureRedirect: '/signin',
-    successRedirect: '/#!'
-  }));
+  app.get('/oauth2callback', passport.authenticate('google'),function(req, res) {
+    if (req.user.isAdmin){
+        res.redirect('/dashboard')
+      } else {
+        res.redirect('/#!')
+      }
+    //failureRedirect: '/signin',
+    //successRedirect: '/#!'
+  });
 
   //Configurar la route 'signout'
   app.get('/signout', users.signout);

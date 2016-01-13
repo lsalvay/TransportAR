@@ -158,8 +158,17 @@ exports.requiresLogin = function(req, res, next) {
     return res.status(401).send({
       message: 'Usuario no está identificado'
     });
-  }
+  } 
 
   // Llamar al siguiente middleware
   next();
 };
+
+// Middleware para verificar si es admin
+exports.validarAdmin = function(req, res, next) {
+  if (req.user.isAdmin){
+        next(); 
+      } else {
+        return res.status(401).send({message: 'Usuario no valido'})
+      }
+}
