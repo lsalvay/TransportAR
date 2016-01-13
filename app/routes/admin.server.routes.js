@@ -15,11 +15,8 @@ module.exports = function(app) {
   //Configurar las routes 'signin'
   app.route('/administrador/signin')
      .get(admin.renderSignin)
-     .post(passport.authenticate('local', {
-       successRedirect: '/dashboard',
-       failureRedirect: '/signin',
-       failureFlash: true
-     }));
+     .post(passport.authenticate('local'), admin.isAdmin);
+        
 
   app.route('/dashboard')
      .get(admin.renderDashBoard);
