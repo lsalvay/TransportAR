@@ -45,7 +45,7 @@ exports.renderSignin = function(req, res, next) {
       messages: req.flash('error') || req.flash('info')
     });
   } else {
-    return res.redirect('/dashBoard');
+    return res.redirect('#!/dashBoard');
   }
 };
 
@@ -104,43 +104,6 @@ exports.signup = function(req, res, next) {
   }
 };
 
-// Crear un nuevo método controller que crea nuevos usuarios 'OAuth'
-exports.saveOAuthUserProfile = function(req, profile, done) {
-  // Prueba a encontrar un documento user que fue registrado usando el actual provider OAuth
-  User.findOne({
-    provider: profile.provider,
-    providerId: profile.providerId
-  }, function(err, user) {
-    // Si ha ocurrido un error continua al siguiente middleware
-    if (err) {
-      return done(err);
-    } else {
-      // Si un usuario no ha podido ser encontrado, crea un nueo user, en otro caso, continua al siguiente middleware
-      if (!user) {
-        // Configura un posible username base username
-        var possibleUsername = profile.username || ((profile.email) ? profile.email.split('@')[0] : '');
-
-        // Encuentra un username único disponible
-        User.findUniqueUsername(possibleUsername, null, function(availableUsername) {
-          // Configura el nombre de usuario disponible 
-          profile.username = availableUsername;
-          
-          // Crear el user
-          user = new User(profile);
-
-          // Intenta salvar el nuevo documento user
-          user.save(function(err) {
-            // Continúa al siguiente middleware
-            return done(err, user);
-          });
-        });
-      } else {
-        // Continúa al siguiente middleware
-        return done(err, user);
-      }
-    }
-  });
-};
 
 // Crear un nuevo método controller para signing out
 exports.signout = function(req, res) {
@@ -163,7 +126,6 @@ exports.requiresLogin = function(req, res, next) {
   // Llamar al siguiente middleware
   next();
 };
-
 
 exports.renderDashBoard = function(req, res){
   res.render('dashBoard',{title:'DashBoard'})

@@ -35,7 +35,7 @@ var UserSchema = new Schema({
   },
   isAdmin: {
     type: Boolean,
-    default: true
+    default: false
   },
   salt: {
     type: String

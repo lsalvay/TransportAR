@@ -35,7 +35,7 @@ module.exports = function() {
       }
 
       //Si el usuario es admin lo direccionamos
-      if (user.isAdmin==true){
+      if (user.isAdmin){
          return done(null, user);
       }
       
