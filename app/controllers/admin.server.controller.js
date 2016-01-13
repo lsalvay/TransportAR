@@ -166,9 +166,9 @@ exports.requiresLogin = function(req, res, next) {
 
 exports.isAdmin = function(req, res, next) {
   // Si un usuario no está autentificado envía el mensaje de error apropiado
-  if (!req.isAdmin {
+  if (!req.isAdmin) {
     return res.status(401).send({
-      message: 'Uuario no es administrador'
+      message: 'Usario no es administrador'
     });
   }
 

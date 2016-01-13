@@ -66,11 +66,15 @@
                   
                   <li><a href="/signout">Logout</a></li>
                   <li role="separator" class="divider"></li>
+
                   <li><a href="/#!/empresas">Listar Empresas</a></li>
-                  <li><a href="/#!/empresas/create">Crear Empresa</a></li>
                   <li><a href="/#!/localidades">Listar Localidades</a></li>
-                  <li><a href="/#!/localidades/create">Crear Localidad</a></li>
-                  
+                  <% if (user) { %>
+                    <% if (user.isAdmin) {%>
+                      <li><a href="/#!/empresas/create">Crear Empresa</a></li>
+                      <li><a href="/#!/localidades/create">Crear Localidad</a></li>
+                    <%  } %>
+                  <%  } %>
                  
                 </ul>
               </li>
