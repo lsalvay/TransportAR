@@ -17,7 +17,7 @@ module.exports = function(app) {
      .get(admin.renderSignin)
      .post(passport.authenticate('local', {
        successRedirect: '/dashboard',
-       failureRedirect: '/administrador/signup',
+       failureRedirect: '/signin',
        failureFlash: true
      }));
 
