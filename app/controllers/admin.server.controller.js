@@ -164,18 +164,9 @@ exports.requiresLogin = function(req, res, next) {
   next();
 };
 
-exports.isAdmin = function(req, res, next) {
-  // Si un usuario no está autentificado envía el mensaje de error apropiado
-  if (!req.isAdmin) {
-    return res.status(401).send({
-      message: 'Usario no es administrador'
-    });
-  }
-
-  // Llamar al siguiente middleware
-  next();
-};
-
 exports.renderDashBoard = function(req, res){
-  res.render('dashBoard',{title:'DashBoard'})
-}
+  res.render('dashBoard',{
+    title: 'DashBoard',
+    user: JSON.stringify(req.user)
+  });
+};

@@ -35,17 +35,6 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-             <li class="dropdown" data-ng-show="!authentication.user">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
-                <ul class="dropdown-menu" >
-                  <li role="separator" class="divider"></li>
-                  
-                  <li><a href="/administrador/signup">Crear Empresa</a></li>
-                  <li><a href="/administrador/signin">Login</a></li>
-                  
-                 
-                </ul>
-              </li>
             
               <li class="dropdown" data-ng-show="!authentication.user">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Empresas<span class="caret"></span></a>
@@ -69,12 +58,6 @@
 
                   <li><a href="/#!/empresas">Listar Empresas</a></li>
                   <li><a href="/#!/localidades">Listar Localidades</a></li>
-                  <% if (user) { %>
-                    <% if (user.isAdmin) {%>
-                      <li><a href="/#!/empresas/create">Crear Empresa</a></li>
-                      <li><a href="/#!/localidades/create">Crear Localidad</a></li>
-                    <%  } %>
-                  <%  } %>
                  
                 </ul>
               </li>
