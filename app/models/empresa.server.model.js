@@ -36,6 +36,11 @@ var EmpresaSchema = new Schema({
     trim: true,
     required: 'El nombre no puede estar en blanco'
   },
+  logo: {
+    type: String,
+    default: '',
+    trim: true
+  },
   telefono: {
     type: String,
     default: '',

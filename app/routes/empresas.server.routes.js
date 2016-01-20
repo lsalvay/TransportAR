@@ -1,5 +1,9 @@
 // Invocar modo JavaScript 'strict'
 'use strict';
+var multer = require('multer');
+
+var upload = multer({dest: 'uploads/'})
+
 
 // Cargar las dependencias del módulo
 var users = require('../../app/controllers/users.server.controller'),
@@ -10,7 +14,7 @@ module.exports = function(app) {
 	// Configurar la rutas base a 'empresas'  
 	app.route('/api/empresas')
 	   .get(empresas.list)
-	   .post(users.requiresLogin, empresas.create);
+	   .post(users.requiresLogin, upload.single('logo'), empresas.create);
 
 	// Configurar la rutas base a 'intersect'    
 	app.route('/api/intersect/')

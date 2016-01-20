@@ -1,6 +1,20 @@
 // Invocar modo JavaScript 'strict' 
 'use strict';
 
+
+// var storage = multer.diskStorage({
+//   destination: function (req, file, callback) {
+//   	callback(null, './uploads')
+//   },
+//   filename: function(req, file, callback){
+//     callback(null, file.filedname + '-' + Date.now())
+//   }
+// })
+
+// var upload = multer({storage: storage}).single('userPhoto');
+
+
+
 // Cargar las dependencias del módulo
 var mongoose = require('mongoose'),
 	Empresa = mongoose.model('Empresa');
@@ -22,6 +36,17 @@ exports.create = function(req, res) {
 
 	// Configurar la propiedad 'creador' del artículo
 	empresa.creador = req.user;
+	debugger
+	if (req.file) {
+		empresa.logo = req.file.path	
+	}
+	// upload(req, res, function(err) {
+	// 	debugger
+	// 	if(err) {
+	// 		return res.end("Error al subir el logo")
+	// 	}
+	// 	res.end('Archivo subido correctamente')
+	// })
 
 	// Intentar salvar el artículo
 	empresa.save(function(err) {
@@ -32,6 +57,9 @@ exports.create = function(req, res) {
 				message: getErrorMessage(err)
 			});
 		} else {
+
+
+
 			// Enviar una representación JSON del artículo 
 			res.json(empresa);
 		}
