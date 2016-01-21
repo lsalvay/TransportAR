@@ -92,6 +92,7 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$routePa
                 nombre: this.nombre,
                 telefono: this.telefono,
                 web: this.web,
+                logo: this.logo,
                 servicio: this.selection,
                 sucursales: $scope.sucursales,
                 zona:{
