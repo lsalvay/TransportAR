@@ -1,46 +1,47 @@
 <!-- La view editar artículo -->
 <section data-ng-controller="EmpresasController" data-ng-init="findOne()">
-	<h1>Ediar Empresa</h1>
-	<!-- Formulario editar artículo -->
-	<form data-ng-submit="update()" novalidate>
-		<div>
-			<label for="titulo">Nombre</label>
-			<div>
-				<input type="text" data-ng-model="empresa.nombre" id="nombre" placeholder="Nombre" required>
+	<form data-ng-submit="update()"  class="form-horizontal" novalidate>
+	<fieldset>
+		<legend>Editar empresa</legend>
+		<div class="form-group col-md-12" >
+			<label class='col-md-12' >Nombre</label>
+			<div class='col-md-6'>
+					<input class='form-control input-md' type="text" data-ng-model="empresa.nombre" id="nombre" placeholder="Nombre" required>
 			</div>
 		</div>
-		<div>
-			<label for="provincia">Provincia</label>
-			<div>
-				<select name="provincia" data-ng-model="empresa.provincia" id="provincia">
-					<option value="Córdoba">Córdoba</option>
-  					<option value="Santa Fe">Santa Fe</option>
- 				 	<option value="Bs As">Bs As</option>
-  					<option value="San Juan">San Juan</option>
-				</select>
-				
+
+		<div class='form-group col-md-12'>
+			<label for="provincia" class='col-md-12'>Provincia</label>
+			<div class='col-md-6' >
+					<select name="provincia" data-ng-model="empresa.provincia" id="provincia" class='form-control'>
+						<option value="Córdoba">Córdoba</option>
+	  					<option value="Santa Fe">Santa Fe</option>
+	 				 	<option value="Bs As">Bs As</option>
+	  					<option value="San Juan">San Juan</option>
+					</select>
 			</div>
 		</div>
-		<div>
-			<label for="localidad">Localidad</label>
-			<div>
-				<select name="localidad" data-ng-model="empresa.localidad" id="localidad">
-					<option value="Cañada de Gómez">Cañada</option>
-  					<option value="Río Segundo">Río Segundo</option>
- 				 	<option value="Campana">Campana</option>
-  					<option value="Ullum">Ullum</option>
-				</select>
-				
+
+		<div class="form-group col-md-12">
+			<label for="localidad" class="col-md-12">Localidad</label>
+			<div class="col-md-6">
+					<select name="localidad" data-ng-model="empresa.localidad" id="localidad" class="form-control">
+							<option value="Cañada de Gómez">Cañada</option>
+		  					<option value="Río Segundo">Río Segundo</option>
+		 				 	<option value="Campana">Campana</option>
+		  					<option value="Ullum">Ullum</option>
+						</select>
+				</div>
 			</div>
-		</div>
-		
-		<div>
-			<input type="submit" value="Actualizar">
-		</div>
-		<!-- El elemento mensaje error -->
-		<div data-ng-show="error">
-			<strong data-ng-bind="error"></strong>
-		</div>
+			<div class="col-md-12">
+				<div >
+					<input type="submit" class='btn btn-sucess' value="Actualizar">
+				</div>
+				<!-- El elemento mensaje error -->
+				<div data-ng-show="error">
+					<strong data-ng-bind="error"></strong>
+				</div>
+			</div>
+		</fieldset>
 	</form>
-	</div>
 </section>

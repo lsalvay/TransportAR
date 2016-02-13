@@ -1,23 +1,35 @@
 <!-- La view listar artículos -->
 <section data-ng-controller="EmpresasController" data-ng-init="find()">
 	<h1>Empresas</h1>
-	<ul>
-		<!-- La lista de artículos -->
-		<li data-ng-repeat="empresa in empresas">
-			<a data-ng-href="#!/empresas/{{empresa._id}}" data-ng-bind="empresa.nombre"></a>
-			<br>
-			<small data-ng-bind="empresa.creado | date:'medium'"></small>
-			<small>/</small>
-			<small data-ng-bind="empresa.creador.fullName"></small>
-			<p data-ng-bind="empresa.provincia"></p>
+	<table class="table">
+		<thead>
+			<th>Nombre</th>
+			<th>Fecha de creacion</th>
+			<th>Creador</th>
+			<th>Accion</th>
+		</thead>
+		<tr data-ng-repeat="empresa in empresas">
+			<td>	<a data-ng-href="#!/empresas/{{empresa._id}}" data-ng-bind="empresa.nombre"></a>
+			
+		
+			</td>
+			<td>
+					<small data-ng-bind="empresa.creado | date:'medium'"></small>
+			</td>
+			<td>
+				<small data-ng-bind="empresa.creador.fullName"></small>
+			</td>
+			<td>
+					<p data-ng-bind="empresa.provincia"></p>
 			<p data-ng-bind="empresa.localidad"></p>
 			<!-- Mostrar los botones de edición para artículo creado -->
     <p data-ng-show="authentication.user._id == empresa.creador._id">
-        <a href="/#!/empresas/{{empresa._id}}/edit">editar</a>
-        <a href="/#!/empresas/{{empresa._id}}" data-ng-click="delete();">borrar</a>
+        <a class='glyphicon glyphicon-pencil' href="/#!/empresas/{{empresa._id}}/edit"></a> - 
+        <a class='glyphicon glyphicon-trash' href="/#!/empresas/{{empresa._id}}" data-ng-click="delete();"></a>
     </p>
-		</li>
-	</ul>
+			</td>
+		</tr>
+	</table>
 	<!-- Si no hay artículos en la lista, sugire al usuario que cree un nuevo artículo -->
 	<div data-ng-hide="!empresas || empresas.length">
 		Aún no hay empresas, porque no creas <a href="/#!/empresas/create">la primera</a>?
